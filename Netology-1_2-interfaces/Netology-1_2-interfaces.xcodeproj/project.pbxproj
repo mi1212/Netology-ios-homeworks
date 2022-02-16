@@ -13,6 +13,7 @@
 		FDED86DB27BD00FE00DEC934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDED86D927BD00FE00DEC934 /* Main.storyboard */; };
 		FDED86DD27BD010200DEC934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDED86DC27BD010200DEC934 /* Assets.xcassets */; };
 		FDED86E027BD010200DEC934 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDED86DE27BD010200DEC934 /* LaunchScreen.storyboard */; };
+		FDED86E827BD1D7000DEC934 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDED86E727BD1D7000DEC934 /* ProfileView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FDED86DC27BD010200DEC934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDED86DF27BD010200DEC934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FDED86E127BD010200DEC934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDED86E727BD1D7000DEC934 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				FDED86D527BD00FE00DEC934 /* SceneDelegate.swift */,
 				FDED86D727BD00FE00DEC934 /* ViewController.swift */,
 				FDED86D927BD00FE00DEC934 /* Main.storyboard */,
+				FDED86E727BD1D7000DEC934 /* ProfileView.xib */,
 				FDED86DC27BD010200DEC934 /* Assets.xcassets */,
 				FDED86DE27BD010200DEC934 /* LaunchScreen.storyboard */,
 				FDED86E127BD010200DEC934 /* Info.plist */,
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDED86E827BD1D7000DEC934 /* ProfileView.xib in Resources */,
 				FDED86E027BD010200DEC934 /* LaunchScreen.storyboard in Resources */,
 				FDED86DD27BD010200DEC934 /* Assets.xcassets in Resources */,
 				FDED86DB27BD00FE00DEC934 /* Main.storyboard in Resources */,
