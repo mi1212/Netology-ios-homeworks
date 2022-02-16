@@ -15,6 +15,7 @@
 		FD41A33927BD71500043A748 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD41A33727BD71500043A748 /* LaunchScreen.storyboard */; };
 		FD68BD0427BD7A1C00CC6222 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD68BD0327BD7A1C00CC6222 /* ProfileView.xib */; };
 		FD68BD0627BD7A4B00CC6222 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68BD0527BD7A4B00CC6222 /* ProfileView.swift */; };
+		FDC6CEAA27BD9C7500517B2F /* ProfileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDC6CEA927BD9C7500517B2F /* ProfileView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FD41A33A27BD71500043A748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD68BD0327BD7A1C00CC6222 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		FD68BD0527BD7A4B00CC6222 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FDC6CEA927BD9C7500517B2F /* ProfileView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				FD41A33A27BD71500043A748 /* Info.plist */,
 				FD68BD0527BD7A4B00CC6222 /* ProfileView.swift */,
 				FD68BD0327BD7A1C00CC6222 /* ProfileView.xib */,
+				FDC6CEA927BD9C7500517B2F /* ProfileView.storyboard */,
 			);
 			path = "Netology-1_2-interfaces";
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 				FD41A33927BD71500043A748 /* LaunchScreen.storyboard in Resources */,
 				FD41A33627BD71500043A748 /* Assets.xcassets in Resources */,
 				FD41A33427BD714D0043A748 /* Main.storyboard in Resources */,
+				FDC6CEAA27BD9C7500517B2F /* ProfileView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +306,7 @@
 				INFOPLIST_FILE = "Netology-1_2-interfaces/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ProfileView;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,7 +334,7 @@
 				INFOPLIST_FILE = "Netology-1_2-interfaces/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ProfileView;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
