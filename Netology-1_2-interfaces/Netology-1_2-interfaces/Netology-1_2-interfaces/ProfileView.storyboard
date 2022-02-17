@@ -21,6 +21,9 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProfileView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRw-I9-Kex">
                                         <rect key="frame" x="20" y="149" width="374" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="GIo-go-4Xy"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -28,10 +31,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
-                                    <constraint firstItem="PRw-I9-Kex" firstAttribute="leading" secondItem="3kK-uo-qKt" secondAttribute="leading" constant="20" symbolic="YES" id="5Wc-CI-YkA"/>
-                                    <constraint firstAttribute="trailing" secondItem="PRw-I9-Kex" secondAttribute="trailing" constant="20" symbolic="YES" id="Mq5-XD-QM0"/>
-                                    <constraint firstAttribute="bottom" secondItem="PRw-I9-Kex" secondAttribute="bottom" constant="726" id="Ox0-AP-MCC"/>
-                                    <constraint firstItem="PRw-I9-Kex" firstAttribute="top" secondItem="3kK-uo-qKt" secondAttribute="top" constant="149" id="j9I-pL-UWl"/>
+                                    <constraint firstItem="PRw-I9-Kex" firstAttribute="leading" secondItem="3kK-uo-qKt" secondAttribute="leading" constant="20" symbolic="YES" id="I6H-6t-oYr"/>
+                                    <constraint firstItem="PRw-I9-Kex" firstAttribute="centerX" secondItem="3kK-uo-qKt" secondAttribute="centerX" id="jML-Oq-m1X"/>
+                                    <constraint firstAttribute="trailing" secondItem="PRw-I9-Kex" secondAttribute="trailing" constant="20" symbolic="YES" id="oVN-gk-gzf"/>
+                                    <constraint firstItem="PRw-I9-Kex" firstAttribute="top" secondItem="3kK-uo-qKt" secondAttribute="top" constant="149" id="zAv-cw-w7M"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -41,6 +44,7 @@
                             <constraint firstItem="3kK-uo-qKt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BKe-1n-2uI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3kK-uo-qKt" secondAttribute="trailing" id="Xtj-WD-1GZ"/>
                             <constraint firstItem="3kK-uo-qKt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="siI-xr-40C"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="3kK-uo-qKt" secondAttribute="bottom" constant="-78" id="yQw-Wn-cxL"/>
                         </constraints>
                     </view>
                 </viewController>

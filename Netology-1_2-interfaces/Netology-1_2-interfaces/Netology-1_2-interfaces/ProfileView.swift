@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileView: UIView {
+@IBDesignable class ProfileView: UIView {
 
     @IBOutlet weak var photo : UIImageView!
     @IBOutlet weak var nameLable: UILabel!
