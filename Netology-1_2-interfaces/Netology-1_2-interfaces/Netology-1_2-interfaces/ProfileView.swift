@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class ProfileView: UIView {
+class ProfileView: UIView {
 
     @IBOutlet weak var photo : UIImageView!
     @IBOutlet weak var nameLable: UILabel!
@@ -33,8 +33,7 @@ import UIKit
     }
 
     private func loadViewFromXib() -> UIView {
-        guard let view = Bundle.main.loadNibNamed("CustomView", owner: self, options: nil)?.first as? UIView else { return UIView() }
-
+        guard let view = Bundle.main.loadNibNamed("ProfileView", owner: self, options: nil)?.first as? UIView else { return UIView() }
         return view
     }
 }
