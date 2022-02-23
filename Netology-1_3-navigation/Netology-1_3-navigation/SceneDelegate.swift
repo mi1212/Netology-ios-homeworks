@@ -21,21 +21,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
 
-    func createFeedNC() -> UINavigationController {
-        let mainVC = FeedViewController()
-        mainVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(imageLiteralResourceName: "Feed"), tag: 1)
-        return UINavigationController(rootViewController: mainVC)
-    }
-
     func createProfileNC() -> UINavigationController {
         let secondVC = ProfileViewController()
         secondVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(imageLiteralResourceName: "Profile"), tag: 1)
         return UINavigationController(rootViewController: secondVC)
     }
 
+    func createFeedNC() -> UINavigationController {
+        let mainVC = FeedViewController()
+        mainVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(imageLiteralResourceName: "Feed"), tag: 0)
+        return UINavigationController(rootViewController: mainVC)
+    }
+
+
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .cyan
+        UITabBar.appearance().tintColor = .systemPurple
         tabBar.viewControllers = [createFeedNC(), createProfileNC()]
 
         return tabBar

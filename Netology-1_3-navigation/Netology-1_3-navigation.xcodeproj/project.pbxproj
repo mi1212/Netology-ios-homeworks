@@ -14,6 +14,7 @@
 		FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA727C56F1B005961A8 /* FeedViewController.swift */; };
 		FD30FFAA27C56F8F005961A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA927C56F8F005961A8 /* ProfileViewController.swift */; };
 		FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFAB27C57D32005961A8 /* PostViewController.swift */; };
+		FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7318C127C6DA9800913FD4 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FD30FFA727C56F1B005961A8 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FD30FFA927C56F8F005961A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FD30FFAB27C57D32005961A8 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		FD7318C127C6DA9800913FD4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				FD30FFA727C56F1B005961A8 /* FeedViewController.swift */,
 				FD30FFA927C56F8F005961A8 /* ProfileViewController.swift */,
 				FD30FFAB27C57D32005961A8 /* PostViewController.swift */,
+				FD7318C127C6DA9800913FD4 /* InfoViewController.swift */,
 				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
 				FD30FF9427C5053A005961A8 /* LaunchScreen.storyboard */,
 				FD30FF9727C5053A005961A8 /* Info.plist */,
@@ -144,6 +147,7 @@
 				FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */,
 				FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */,
 				FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */,
+				FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */,
 				FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
