@@ -43,11 +43,11 @@ class InfoViewController: UIViewController {
         let alert = UIAlertController(title: "Alert", message: "Button is working", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(
             title: NSLocalizedString("Close", comment: "Default action"),
-            style: .default ,
+            style: .cancel ,
             handler: { _ in
                 NSLog("The \"OK\" alert occured.")
             }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default , handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
 }
