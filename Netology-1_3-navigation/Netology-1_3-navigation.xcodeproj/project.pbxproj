@@ -10,7 +10,6 @@
 		FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8927C50529005961A8 /* AppDelegate.swift */; };
 		FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8B27C50529005961A8 /* SceneDelegate.swift */; };
 		FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9227C5053A005961A8 /* Assets.xcassets */; };
-		FD30FF9627C5053A005961A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9427C5053A005961A8 /* LaunchScreen.storyboard */; };
 		FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA727C56F1B005961A8 /* FeedViewController.swift */; };
 		FD30FFAA27C56F8F005961A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA927C56F8F005961A8 /* ProfileViewController.swift */; };
 		FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFAB27C57D32005961A8 /* PostViewController.swift */; };
@@ -22,7 +21,6 @@
 		FD30FF8927C50529005961A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30FF8B27C50529005961A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FD30FF9227C5053A005961A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FD30FF9527C5053A005961A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD30FF9727C5053A005961A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30FFA727C56F1B005961A8 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FD30FFA927C56F8F005961A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				FD30FFAB27C57D32005961A8 /* PostViewController.swift */,
 				FD7318C127C6DA9800913FD4 /* InfoViewController.swift */,
 				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
-				FD30FF9427C5053A005961A8 /* LaunchScreen.storyboard */,
 				FD30FF9727C5053A005961A8 /* Info.plist */,
 			);
 			path = "Netology-1_3-navigation";
@@ -131,7 +128,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD30FF9627C5053A005961A8 /* LaunchScreen.storyboard in Resources */,
 				FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,17 +149,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		FD30FF9427C5053A005961A8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FD30FF9527C5053A005961A8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FD30FF9827C5053A005961A8 /* Debug */ = {
