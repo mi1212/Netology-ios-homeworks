@@ -11,19 +11,41 @@ class ProfileHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(showStatusButton)
-        self.addSubview(profileImage)
-        self.addSubview(lable)
-        self.activateConstraints()
+        self.drawSelf()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func drawSelf() {
+        self.addSubview(stackView)
+        self.stackView.addArrangedSubview(self.profileImage)
+        self.stackView.addArrangedSubview(self.labelsStackView)
+        self.labelsStackView.addArrangedSubview(self.nameLable)
+        self.labelsStackView.addArrangedSubview(self.statusLable)
+        self.addSubview(self.showStatusButton)
+
+        let stackTopConstraint = self.stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16)
+        let stackLeadingContraint = self.stackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16)
+        let stackTrailingConstraint = self.stackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+
+        let showStatusButtinTopConstraint = self.showStatusButton.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16)
+        let showStatusButtonLeadingConstraint = self.showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+        let showStatusButtonTrailingConstraint = self.showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        let showStatusButtonHeightConstaint = self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
+
+        let imageViewConstraint = self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1)
+
+        NSLayoutConstraint.activate([
+            imageViewConstraint, stackTopConstraint, stackLeadingContraint, stackTrailingConstraint, showStatusButtinTopConstraint, showStatusButtonLeadingConstraint, showStatusButtonTrailingConstraint, showStatusButtonHeightConstaint
+        ])
+    }
+
+//MARK - views
     private lazy var showStatusButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemPurple
+        button.backgroundColor = .systemBlue
         button.setTitle("Show status", for: .normal)
         button.layer.cornerRadius = 4
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,23 +69,41 @@ class ProfileHeaderView: UIView {
         return image
     }()
 
-    private lazy var lable: UILabel = {
-        let lable = UILabel()
-        lable.text = "A.P.Chekhov"
-        lable.textColor = .black
-        lable.font.withSize(18)
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        return lable
+    private lazy var nameLable: UILabel = {
+        let label = UILabel()
+        label.text = "A.P.Chekhov"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
-    private func activateConstraints() {
-        self.profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        self.profileImage.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        self.showStatusButton.topAnchor.constraint(equalTo: self.profileImage.bottomAnchor, constant: 16).isActive = true
-        self.showStatusButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        self.showStatusButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        self.showStatusButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        self.lable.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27).isActive = true
-        self.lable.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    }
+    private lazy var statusLable: UILabel = {
+        let label = UILabel()
+        label.text = "мне бы отпотчевать"
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+//MARK - stacks
+
+    private lazy var labelsStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 16
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 16
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
 }

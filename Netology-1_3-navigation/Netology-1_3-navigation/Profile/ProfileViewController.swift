@@ -13,14 +13,14 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Profile"
         self.view.backgroundColor = .lightGray
+        self.setupView()
     }
 
     let subView = ProfileHeaderView(frame: CGRect(x: 10, y: 10, width: 1000, height: 1000))
 //    let subView = ProfileHeaderView()
 
-    override func viewWillLayoutSubviews() {
+    private func setupView() {
         self.subView.frame = self.view.frame
-//        self.subView.backgroundColor = .purple
         self.view.addSubview(subView)
     }
 }

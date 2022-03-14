@@ -22,11 +22,17 @@ class InfoViewController: UIViewController {
 
     private lazy var alertButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 12
-        button.clipsToBounds = true
-        button.backgroundColor = .purple
+//        button.clipsToBounds = true
+        button.backgroundColor = .systemBlue
         button.setTitle("Alert", for: .normal)
         button.setTitleColor(.white, for: .normal)
+
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowOpacity = 1
+        button.layer.masksToBounds = false
+
         button.addTarget(self, action: #selector(didTapAlertButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -42,12 +48,12 @@ class InfoViewController: UIViewController {
     @objc private func didTapAlertButton() {
         let alert = UIAlertController(title: "Alert", message: "Button is working", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(
-            title: NSLocalizedString("Close", comment: "Default action"),
+            title: NSLocalizedString("OK", comment: "Default action"),
             style: .cancel ,
             handler: { _ in
                 NSLog("The \"OK\" alert occured.")
             }))
-        alert.addAction(UIAlertAction(title: "OK", style: .default , handler: nil))
+        alert.addAction(UIAlertAction(title: "Close", style: .default , handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
