@@ -27,7 +27,7 @@ class FeedViewController: UIViewController {
         let button = UIButton()
         button.layer.cornerRadius = 4
         button.clipsToBounds = true
-        button.backgroundColor = .purple
+        button.backgroundColor = .systemPurple
         button.setTitle(firstPost.title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(didTapTransitionButton), for: .touchUpInside)
