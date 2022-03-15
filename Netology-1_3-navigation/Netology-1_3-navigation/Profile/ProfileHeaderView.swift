@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol ProfileHeaderViewProtocol: AnyObject {
+    func buttonPressed(textFieldIsVisible: Bool, completion: @escaping () -> Void)
+}
+
 class ProfileHeaderView: UIView {
+
+    private var buttonTopConstraint: NSLayoutConstraint?
+
+    weak var delegate: ProfileHeaderViewProtocol?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,18 +27,20 @@ class ProfileHeaderView: UIView {
     }
 
     private func drawSelf() {
-        self.addSubview(stackView)
+        self.addSubview(self.stackView)
         self.stackView.addArrangedSubview(self.profileImage)
         self.stackView.addArrangedSubview(self.labelsStackView)
         self.labelsStackView.addArrangedSubview(self.nameLable)
         self.labelsStackView.addArrangedSubview(self.statusLable)
         self.addSubview(self.showStatusButton)
+        self.addSubview(self.statusTextField)
 
         let stackTopConstraint = self.stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16)
         let stackLeadingContraint = self.stackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16)
         let stackTrailingConstraint = self.stackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
 
-        let showStatusButtinTopConstraint = self.showStatusButton.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16)
+        self.buttonTopConstraint = self.showStatusButton.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16)
+        self.buttonTopConstraint?.priority = UILayoutPriority(999)
         let showStatusButtonLeadingConstraint = self.showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         let showStatusButtonTrailingConstraint = self.showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         let showStatusButtonHeightConstaint = self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
@@ -38,15 +48,15 @@ class ProfileHeaderView: UIView {
         let imageViewConstraint = self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1)
 
         NSLayoutConstraint.activate([
-            imageViewConstraint, stackTopConstraint, stackLeadingContraint, stackTrailingConstraint, showStatusButtinTopConstraint, showStatusButtonLeadingConstraint, showStatusButtonTrailingConstraint, showStatusButtonHeightConstaint
-        ])
+            imageViewConstraint, stackTopConstraint, stackLeadingContraint, stackTrailingConstraint, self.buttonTopConstraint, showStatusButtonLeadingConstraint, showStatusButtonTrailingConstraint, showStatusButtonHeightConstaint,
+        ].compactMap({ $0 }))
     }
 
-//MARK - views
+    //MARK - views
     private lazy var showStatusButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
-        button.setTitle("Show status", for: .normal)
+        button.setTitle("Change status", for: .normal)
         button.layer.cornerRadius = 4
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.shadowRadius = 4
@@ -88,7 +98,20 @@ class ProfileHeaderView: UIView {
         return label
     }()
 
-//MARK - stacks
+    private lazy var statusTextField: UITextField = {
+        let textField = UITextField()
+        textField.isHidden = true
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 12
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 1
+        textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        textField.textColor = .black
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    //MARK - stacks
 
     private lazy var labelsStackView: UIStackView = {
         let stack = UIStackView()
@@ -107,8 +130,49 @@ class ProfileHeaderView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-// MARK - funcs
-    @objc func buttonPressed() {
+    // MARK - funcs
+
+
+
+    @objc private func buttonPressed() {
         print("\(self.statusLable.text ?? "Статуса нет")")
+
+        if self.statusTextField.isHidden {
+            self.statusTextField.isHidden = false
+            self.statusTextField.text = ""
+            self.showStatusButton.setTitle("Set status", for: .normal)
+
+            self.buttonTopConstraint?.isActive = false
+
+            let statusTextFieldTopConstraint = self.statusTextField.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16)
+
+            let statusTextFieldHeightConstraint = self.statusTextField.heightAnchor.constraint(equalToConstant: 40)
+
+            let statusTextFieldLeadingConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: self.labelsStackView.leadingAnchor)
+
+            let statusTextFieldTrailingConstraint = self.statusTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+
+            self.buttonTopConstraint = self.showStatusButton.topAnchor.constraint(equalTo: self.statusTextField.bottomAnchor, constant: 16)
+            self.buttonTopConstraint?.priority = UILayoutPriority(rawValue: 999)
+
+            NSLayoutConstraint.activate([
+                statusTextFieldTopConstraint, statusTextFieldHeightConstraint, statusTextFieldLeadingConstraint, statusTextFieldTrailingConstraint, self.buttonTopConstraint
+            ].compactMap({ $0 }))
+
+
+        } else {
+            statusTextField.isHidden = true
+            self.statusLable.text = self.statusTextField.text
+            self.showStatusButton.setTitle("Change status", for: .normal)
+
+            self.buttonTopConstraint?.isActive = false
+
+            self.buttonTopConstraint = self.showStatusButton.topAnchor.constraint(equalTo: self.statusLable.bottomAnchor, constant: 16)
+            self.buttonTopConstraint?.priority = UILayoutPriority(rawValue: 999)
+
+            NSLayoutConstraint.activate([
+                self.buttonTopConstraint
+            ].compactMap({ $0 }))
+        }
     }
 }
