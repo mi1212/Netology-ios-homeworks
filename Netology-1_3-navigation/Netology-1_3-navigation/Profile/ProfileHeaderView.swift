@@ -54,6 +54,7 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowOpacity = 1
         button.layer.masksToBounds = false
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -80,7 +81,7 @@ class ProfileHeaderView: UIView {
 
     private lazy var statusLable: UILabel = {
         let label = UILabel()
-        label.text = "мне бы отпотчевать"
+        label.text = "Одинокому везде пустыня."
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -106,4 +107,8 @@ class ProfileHeaderView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+// MARK - funcs
+    @objc func buttonPressed() {
+        print("\(self.statusLable.text ?? "Статуса нет")")
+    }
 }

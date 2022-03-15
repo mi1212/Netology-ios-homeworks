@@ -37,7 +37,6 @@ class PostViewController: UIViewController {
 
     @objc private func didTapInfoButton() {
         let infoVC = InfoViewController()
-//        secondVC.title = firstPost.title
         self.navigationController?.present(infoVC, animated: true)
     }
 }
