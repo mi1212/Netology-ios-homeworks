@@ -19,6 +19,7 @@ class ProfileHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         self.drawSelf()
     }
 
@@ -54,17 +55,16 @@ class ProfileHeaderView: UIView {
         ].compactMap({ $0 }))
     }
 
+    
     //MARK - views
+
     private lazy var showStatusButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.setTitle("Change status", for: .normal)
-        button.layer.cornerRadius = 4
+        button.backgroundColor = UIColor(named: "Color")
+        button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowOpacity = 1
         button.layer.masksToBounds = false
         button.addTarget(self, action: #selector(didTapStatusButton), for: .touchUpInside)
         return button
@@ -114,6 +114,7 @@ class ProfileHeaderView: UIView {
         return textField
     }()
 
+
     //MARK - stacks
 
     private lazy var labelsStackView: UIStackView = {
@@ -133,9 +134,9 @@ class ProfileHeaderView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+
+
     // MARK - funcs
-
-
 
     @objc private func didTapStatusButton() {
 

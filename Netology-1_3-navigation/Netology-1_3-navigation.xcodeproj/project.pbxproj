@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD11D5FF27EAF30000CFFAE9 /* OldProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD11D5FE27EAF30000CFFAE9 /* OldProfileViewController.swift */; };
 		FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8927C50529005961A8 /* AppDelegate.swift */; };
 		FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8B27C50529005961A8 /* SceneDelegate.swift */; };
 		FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9227C5053A005961A8 /* Assets.xcassets */; };
@@ -16,9 +17,12 @@
 		FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7318C127C6DA9800913FD4 /* InfoViewController.swift */; };
 		FD7D881027DB579B00AF9EDC /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7D880F27DB579B00AF9EDC /* ProfileHeaderView.swift */; };
 		FD9CD43D27E8DA780072CEB9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */; };
+		FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0BE5927EB10F400A2767E /* Post.swift */; };
+		FDA0BE5C27EB121C00A2767E /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0BE5B27EB121C00A2767E /* Posts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD11D5FE27EAF30000CFFAE9 /* OldProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldProfileViewController.swift; sourceTree = "<group>"; };
 		FD30FF8627C50529005961A8 /* Netology-1_3-navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netology-1_3-navigation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30FF8927C50529005961A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30FF8B27C50529005961A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +34,9 @@
 		FD7318C127C6DA9800913FD4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FD7D880F27DB579B00AF9EDC /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		FDA0BE5927EB10F400A2767E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FDA0BE5B27EB121C00A2767E /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		FDA0BE5D27EB2C4A00A2767E /* Posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Posts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +69,7 @@
 		FD30FF8827C50529005961A8 /* Netology-1_3-navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FDA0BE5827EB10DE00A2767E /* Post */,
 				FD7D880E27DB575500AF9EDC /* Profile */,
 				FD30FF8927C50529005961A8 /* AppDelegate.swift */,
 				FD30FF8B27C50529005961A8 /* SceneDelegate.swift */,
@@ -70,6 +78,7 @@
 				FD7318C127C6DA9800913FD4 /* InfoViewController.swift */,
 				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
 				FD30FF9727C5053A005961A8 /* Info.plist */,
+				FD11D5FE27EAF30000CFFAE9 /* OldProfileViewController.swift */,
 			);
 			path = "Netology-1_3-navigation";
 			sourceTree = "<group>";
@@ -77,11 +86,21 @@
 		FD7D880E27DB575500AF9EDC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */,
 				FD30FFA927C56F8F005961A8 /* ProfileViewController.swift */,
 				FD7D880F27DB579B00AF9EDC /* ProfileHeaderView.swift */,
-				FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		FDA0BE5827EB10DE00A2767E /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0BE5B27EB121C00A2767E /* Posts.swift */,
+				FDA0BE5D27EB2C4A00A2767E /* Posts.json */,
+				FDA0BE5927EB10F400A2767E /* Post.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +178,11 @@
 				FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */,
 				FD9CD43D27E8DA780072CEB9 /* LogInViewController.swift in Sources */,
 				FD7D881027DB579B00AF9EDC /* ProfileHeaderView.swift in Sources */,
+				FDA0BE5C27EB121C00A2767E /* Posts.swift in Sources */,
+				FD11D5FF27EAF30000CFFAE9 /* OldProfileViewController.swift in Sources */,
 				FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */,
 				FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */,
+				FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

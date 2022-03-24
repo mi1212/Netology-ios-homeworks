@@ -11,54 +11,67 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Profile"
-        self.view.backgroundColor = .lightGray
+        self.navigationController?.navigationBar.isHidden = true
         self.setupView()
+        self.updateLayout(with: self.view.frame.size)
+
+        self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        self.tableView.dataSource = self
+        self.updateLayout(with: self.view.frame.size)
     }
 
+    private func setupView() {
+        self.view.addSubview(self.tableView)
 
-    private lazy var subView: ProfileHeaderView = {
+        let tableViewTopConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor)
+        let tableViewRightConstraint = self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+        let tableViewLeftConstraint = self.tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+        let tableViewBottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+
+        //        let viewTopConstraint = self.headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor)
+        //        let viewLeadingConstraint = self.headerView.leadingAnchor.constraint(equalTo: self.tableView.leadingAnchor)
+        //        let viewTrailingConstraint = self.headerView.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor)
+        //        let viewBottomConstraint = self.headerView.bottomAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: -200)
+
+        NSLayoutConstraint.activate([
+            tableViewTopConstraint, tableViewRightConstraint, tableViewLeftConstraint, tableViewBottomConstraint,
+            //           viewTopConstraint, viewLeadingConstraint, viewTrailingConstraint, viewBottomConstraint,
+        ])
+    }
+
+    //MARK - views
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.backgroundColor = .yellow
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return  table
+    }()
+
+    private lazy var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
 
     }()
 
-    private lazy var specialButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.setTitle("Special unused Button", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowOpacity = 1
-        button.layer.masksToBounds = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    private func setupView() {
-        self.view.addSubview(self.subView)
-        self.view.addSubview(self.specialButton)
-
-        let viewTopConstraint = self.subView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let viewLeadingConstraint = self.subView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let viewTrailingConstraint = self.subView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let viewBottomConstraint = self.subView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -200)
-
-        let buttonBottomConstraint = self.specialButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        let buttonLeadingConstraint = self.specialButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
-        let buttonTrailingConstraint = self.specialButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
-        let buttonHeightConstraint = self.specialButton.heightAnchor.constraint(equalToConstant: 50)
-
-        NSLayoutConstraint.activate([
-            viewTopConstraint, viewLeadingConstraint, viewTrailingConstraint, viewBottomConstraint, buttonBottomConstraint, buttonLeadingConstraint, buttonTrailingConstraint, buttonHeightConstraint
-        ])
+    private func updateLayout(with size: CGSize) {
+        self.tableView.frame = CGRect.init(origin: .zero, size: size)
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (contex) in
+            self.updateLayout(with: size)
+        }, completion: nil)
+    }
+
+    private var data = ["dfsdf", "dfsdfh", "dfsdf", "dfsdfh","dfsdf", "dfsdfh", "dfsdf", "dfsdfh","dfsdf", "dfsdfh", "dfsdf", "dfsdfh", "dfsdf", "dfsdfh", "dfsdf", "dfsdfh","dfsdf", "dfsdfh", "dfsdf", "dfsdfh" ]
+
 }
+
 extension ProfileViewController: ProfileHeaderViewProtocol {
     func didTapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
 
@@ -69,6 +82,38 @@ extension ProfileViewController: ProfileHeaderViewProtocol {
             completion()
         }
     }
+
 }
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch tableView {
+        case self.tableView:
+            return self.data.count
+        default:
+            return 0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        cell.textLabel?.text = self.data[indexPath.row]
+        return cell
+    }
+
+
+}
+
+
+
+class TableViewCell: UITableViewCell {
+
+}
+
+
+
+
+
 
 

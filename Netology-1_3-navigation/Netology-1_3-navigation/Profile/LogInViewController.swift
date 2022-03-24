@@ -14,8 +14,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         self.setupView()
-//        self.loginView.delegate = self
-//        self.passView.delegate = self
+        self.setupKeyboardHiding()
+        self.loginView.delegate = self
+        self.passView.delegate = self
     }
 
     private func setupView() {
@@ -26,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.contentView.addSubview(logInButtom)
         self.stackView.addArrangedSubview(loginView)
         self.stackView.addArrangedSubview(passView)
-
+        self.view.addGestureRecognizer(tap)
 
         let scrollViewTopConstraint = self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor)
         let scrollViewRightConstraint = self.scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
@@ -36,7 +37,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let contentViewTrailingConstraint = self.contentView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         let contentViewLeadingConstraint = self.contentView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         let contentViewTopConstraint = self.contentView.topAnchor.constraint(equalTo: self.view.topAnchor)
-//        let contentViewBottomAnchor = self.contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         let contentViewHeightConstraint = self.contentView.heightAnchor.constraint(equalToConstant: 1000)
 
         let logoViewTopConstraint = self.logoImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120)
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         NSLayoutConstraint.activate([
             scrollViewTopConstraint, scrollViewRightConstraint, scrollViewBottomConstraint, scrollViewLeftConstraint,
-            contentViewTrailingConstraint, contentViewLeadingConstraint, contentViewTopConstraint, //contentViewBottomAnchor,
+            contentViewTrailingConstraint, contentViewLeadingConstraint, contentViewTopConstraint,
             contentViewHeightConstraint,
             logoViewTopConstraint, logoViewHeightLogoConstraint, logoViewWidthLogoConstraint,  logoViewCenterLogoConstraint,
             stackViewTopConstraint, stackViewLeadingConstraint, stackViewTrailingConstraint, stackViewHeightConstraint,
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         ])
 
     }
-    //MARK - views
+    //MARK: views
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -120,16 +120,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private lazy var logInButtom: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(pixel, for: .normal)
-        button.setBackgroundImage(pixel, for: .selected)
         button.setTitle("Log In", for: .normal)
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(didTapTransitionButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+
+        if button.isSelected {
+            button.alpha = 0.8
+        } else if button.isHighlighted {
+            button.alpha = 0.8
+        } else if !button.isEnabled {
+            button.alpha = 0.8
+        } else {
+            button.alpha = 1
+        }
 
         return button
     }()
 
-    //MARK - stacks
+    //MARK: stacks
 
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -145,7 +155,73 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return stack
     }()
 
+    // MARK: objc
+
+    @objc private func didTapTransitionButton() {
+        let secondVC = ProfileViewController()
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
+
+    //MARK: dismissKeyboardTap
+
+    private lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        return tap
+    }()
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+
+}
+// MARK: Keyboard
+
+
+extension LoginViewController {
+
+    private func setupKeyboardHiding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+
+        if textFieldBottomY > (keyboardTopY - 65) {
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY / 2 ) * (-1)
+            view.frame.origin.y = newFrameY
+        }
+    }
+
 }
 
+extension UIResponder {
+
+    private struct Static {
+        static weak var responder: UIResponder?
+    }
+
+    static func currentFirst() -> UIResponder? {
+        Static.responder = nil
+        UIApplication.shared.sendAction(#selector(UIResponder._trap), to: nil, from: nil, for: nil)
+        return Static.responder
+    }
+
+    @objc private func _trap() {
+        Static.responder = self
+    }
+}
 
 
