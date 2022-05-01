@@ -155,7 +155,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return stack
     }()
 
-    // MARK: objc
+    // MARK: - objc
 
     @objc private func didTapTransitionButton() {
         let secondVC = ProfileViewController()
@@ -175,7 +175,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 
 }
-// MARK: Keyboard
+// MARK: - Keyboard
 
 
 extension LoginViewController {

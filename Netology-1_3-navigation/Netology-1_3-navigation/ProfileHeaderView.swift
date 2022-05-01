@@ -1,8 +1,8 @@
 //
-//  ProfileTableHederView.swift
+//  ProfileHeaderView.swift
 //  Netology-1_3-navigation
 //
-//  Created by Mikhail Chuparnov on 30.04.2022.
+//  Created by Mikhail Chuparnov on 11.03.2022.
 //
 
 import UIKit
@@ -11,18 +11,23 @@ protocol ProfileHeaderViewProtocol: AnyObject {
     func didTapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void)
 }
 
+class ProfileHeaderView: UIView {
 
-class ProfileHeaderView: UIView, UITextFieldDelegate {
     private var buttonTopConstraint: NSLayoutConstraint?
 
     weak var delegate: ProfileHeaderViewProtocol?
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
+        self.drawSelf()
+    }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private func drawSelf() {
-//        self.addSubview(self.view)
-
         self.addSubview(self.stackView)
         self.addSubview(self.showStatusButton)
         self.addSubview(self.statusTextField)
@@ -48,21 +53,10 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         NSLayoutConstraint.activate([
             stackTopConstraint, stackLeadingContraint, stackTrailingConstraint, self.buttonTopConstraint, showStatusButtonLeadingConstraint, showStatusButtonTrailingConstraint, showStatusButtonHeightConstaint, imageViewConstraint, imageHeightConstraint
         ].compactMap({ $0 }))
-
-//        NSLayoutConstraint.activate([
-//            view.topAnchor.constraint(equalTo: self.topAnchor),
-//            view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            view.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            view.heightAnchor.constraint(equalToConstant: 100)
-//        ])
     }
 
-//MARK: - views
-
-    private lazy var view: UIView = {
-        let view = UIView(frame: .zero)
-        return view
-    } ()
+    
+    //MARK - views
 
     private lazy var showStatusButton: UIButton = {
         let button = UIButton()
@@ -115,13 +109,13 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         textField.layer.borderWidth = 1
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.textColor = .black
-//        textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
 
-// MARK: - stacks
+    //MARK - stacks
 
     private lazy var labelsStackView: UIStackView = {
         let stack = UIStackView()
@@ -142,7 +136,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     }()
 
 
-// MARK: - funcs
+    // MARK - funcs
 
     @objc private func didTapStatusButton() {
 
