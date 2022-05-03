@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FD11D5FF27EAF30000CFFAE9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD11D5FE27EAF30000CFFAE9 /* ProfileViewController.swift */; };
+		FD22F48228201A310099BA12 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */; };
+		FD22F485282053470099BA12 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22F484282053470099BA12 /* PhotosViewController.swift */; };
+		FD22F487282053D90099BA12 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22F486282053D90099BA12 /* PhotosCollectionViewCell.swift */; };
 		FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8927C50529005961A8 /* AppDelegate.swift */; };
 		FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8B27C50529005961A8 /* SceneDelegate.swift */; };
 		FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9227C5053A005961A8 /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		FD11D5FE27EAF30000CFFAE9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		FD22F484282053470099BA12 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		FD22F486282053D90099BA12 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD30FF8627C50529005961A8 /* Netology-1_3-navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netology-1_3-navigation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30FF8927C50529005961A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30FF8B27C50529005961A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD22F48328201A3A0099BA12 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */,
+				FD22F484282053470099BA12 /* PhotosViewController.swift */,
+				FD22F486282053D90099BA12 /* PhotosCollectionViewCell.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
 		FD30FF7D27C50529005961A8 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +92,7 @@
 			children = (
 				FDA0BE5827EB10DE00A2767E /* Post */,
 				FD7D880E27DB575500AF9EDC /* Profile */,
+				FD22F48328201A3A0099BA12 /* Photos */,
 				FD30FF8927C50529005961A8 /* AppDelegate.swift */,
 				FD30FF8B27C50529005961A8 /* SceneDelegate.swift */,
 				FD30FFA727C56F1B005961A8 /* FeedViewController.swift */,
@@ -179,6 +196,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD22F48228201A310099BA12 /* PhotosTableViewCell.swift in Sources */,
+				FD22F485282053470099BA12 /* PhotosViewController.swift in Sources */,
 				FD30FFAA27C56F8F005961A8 /* TestProfileViewController.swift in Sources */,
 				FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */,
 				FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */,
@@ -191,6 +210,7 @@
 				FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */,
 				FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */,
 				FDC69E2F281D7B05003D98BE /* CustomTableViewCell.swift in Sources */,
+				FD22F487282053D90099BA12 /* PhotosCollectionViewCell.swift in Sources */,
 				FDC69E31281D88F5003D98BE /* UIView+Extantion.swift in Sources */,
 				FDC69E33281DC3CE003D98BE /* CustomHeader.swift in Sources */,
 			);
