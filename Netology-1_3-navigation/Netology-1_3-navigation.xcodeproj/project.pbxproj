@@ -12,7 +12,6 @@
 		FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8B27C50529005961A8 /* SceneDelegate.swift */; };
 		FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9227C5053A005961A8 /* Assets.xcassets */; };
 		FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA727C56F1B005961A8 /* FeedViewController.swift */; };
-		FD30FFAA27C56F8F005961A8 /* TestProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA927C56F8F005961A8 /* TestProfileViewController.swift */; };
 		FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFAB27C57D32005961A8 /* PostViewController.swift */; };
 		FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7318C127C6DA9800913FD4 /* InfoViewController.swift */; };
 		FD9CD43D27E8DA780072CEB9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */; };
@@ -32,7 +31,6 @@
 		FD30FF9227C5053A005961A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD30FF9727C5053A005961A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30FFA727C56F1B005961A8 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		FD30FFA927C56F8F005961A8 /* TestProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProfileViewController.swift; sourceTree = "<group>"; };
 		FD30FFAB27C57D32005961A8 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		FD7318C127C6DA9800913FD4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 				FD7318C127C6DA9800913FD4 /* InfoViewController.swift */,
 				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
 				FD30FF9727C5053A005961A8 /* Info.plist */,
-				FD30FFA927C56F8F005961A8 /* TestProfileViewController.swift */,
 			);
 			path = "Netology-1_3-navigation";
 			sourceTree = "<group>";
@@ -179,7 +176,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD30FFAA27C56F8F005961A8 /* TestProfileViewController.swift in Sources */,
 				FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */,
 				FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */,
 				FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */,
