@@ -7,3 +7,4 @@
 1. UI базовые компоненты
 1. Верстка экранов для iOS. Auto Layout
 1. UITableView, UIScrollView, datasource и delegate
+1. CollectionView
