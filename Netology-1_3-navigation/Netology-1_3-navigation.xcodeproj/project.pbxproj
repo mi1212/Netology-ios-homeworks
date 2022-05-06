@@ -19,7 +19,6 @@
 		FDA0BE5C27EB121C00A2767E /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0BE5B27EB121C00A2767E /* Posts.swift */; };
 		FDC69E2F281D7B05003D98BE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E2E281D7B04003D98BE /* CustomTableViewCell.swift */; };
 		FDC69E31281D88F5003D98BE /* UIView+Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E30281D88F5003D98BE /* UIView+Extantion.swift */; };
-		FDC69E33281DC3CE003D98BE /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E32281DC3CE003D98BE /* CustomHeader.swift */; };
 		FDC69E35281DC880003D98BE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E34281DC880003D98BE /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +37,6 @@
 		FDA0BE5B27EB121C00A2767E /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		FDC69E2E281D7B04003D98BE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		FDC69E30281D88F5003D98BE /* UIView+Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extantion.swift"; sourceTree = "<group>"; };
-		FDC69E32281DC3CE003D98BE /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		FDC69E34281DC880003D98BE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,7 +90,6 @@
 				FDC69E34281DC880003D98BE /* ProfileHeaderView.swift */,
 				FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */,
 				FD11D5FE27EAF30000CFFAE9 /* ProfileViewController.swift */,
-				FDC69E32281DC3CE003D98BE /* CustomHeader.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -188,7 +185,6 @@
 				FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */,
 				FDC69E2F281D7B05003D98BE /* CustomTableViewCell.swift in Sources */,
 				FDC69E31281D88F5003D98BE /* UIView+Extantion.swift in Sources */,
-				FDC69E33281DC3CE003D98BE /* CustomHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
