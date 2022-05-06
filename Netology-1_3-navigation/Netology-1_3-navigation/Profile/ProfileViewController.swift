@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifire) // регистрация ячейки
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "photoscell") // регистрация ячейки
         return tableView
     }()
 
@@ -48,10 +49,27 @@ extension ProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifire, for: indexPath) as! CustomTableViewCell
-        cell.setupCell(post: postsArray[indexPath.row])
-        return cell
+
+        if indexPath == [0, 0] {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "photoscell", for: indexPath)
+            print("\(indexPath)")
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifire, for: indexPath) as! CustomTableViewCell
+            cell.setupCell(post: postsArray[indexPath.row])
+            print("\(indexPath)")
+            return cell
+        }
     }
+
+
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        2
+//    }
+
+
+
+
 
 
 
