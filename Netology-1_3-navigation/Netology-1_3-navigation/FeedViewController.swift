@@ -19,21 +19,17 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Feed"
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .white
         self.setupView()
     }
     
     private lazy var transitionButton: UIButton = {
         let button = UIButton()
         button.clipsToBounds = true
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: "Color")
         button.setTitle(firstPost.title, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowOpacity = 1
-        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(didTapTransitionButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func createProfileNC() -> UINavigationController {
-        let secondVC = ProfileViewController()
+        let secondVC = LoginViewController()
         secondVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(imageLiteralResourceName: "Profile"), tag: 1)
         return UINavigationController(rootViewController: secondVC)
     }
