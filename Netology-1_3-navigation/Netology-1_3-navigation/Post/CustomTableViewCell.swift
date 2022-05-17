@@ -40,7 +40,6 @@ class CustomTableViewCell: UITableViewCell {
         desription.textColor = .systemGray
         desription.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         desription.numberOfLines = 0
-        //        desription.backgroundColor = .gray
         return desription
     }()
 

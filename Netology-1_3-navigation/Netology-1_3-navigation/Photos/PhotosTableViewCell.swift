@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol PhotosTableViewCellDelegate: AnyObject {
+    func buttonPressed()
+}
+
 class PhotosTableViewCell: UITableViewCell {
+    
+    weak var delegate: PhotosTableViewCellDelegate?
 
 
     //MARK: - UIView
@@ -28,71 +34,29 @@ class PhotosTableViewCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
-    private let photoCell1: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "chehovphoto_1", in: nil, with: .none)
-        image.sizeToFit()
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    
+    private lazy var photoCollection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.backgroundColor = .white
+        collection.delegate = self
+        collection.dataSource = self
+        collection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifire)
+        return collection
     }()
 
 
-    private let photoCell2: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "chehovphoto_2", in: nil, with: .none)
-
-        image.sizeToFit()
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    private lazy var button: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapTransitionButton), for: .touchUpInside)
+        return button
     }()
-
-    private let photoCell3: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "chehovphoto_3", in: nil, with: .none)
-        image.sizeToFit()
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-
-    private let photoCell4: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "chehovphoto_4", in: nil, with: .none)
-        image.sizeToFit()
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-
-//    private lazy var button: UIButton = {
-//        let button = UIButton()
-//        button.backgroundColor = .systemBlue
-//        button.translatesAutoresizingMaskIntoConstraints = false
-////        button.backgroundColor = .yellow
-////        button.addTarget(self, action: #selector(didTapStatusButton), for: .touchUpInside)
-//        return button
-//    }()
 
     //MARK: - UIStack
-
-    private let stack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.spacing = 8
-        stack.alignment = .center
-        return stack
-    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "photoscell")
@@ -103,79 +67,92 @@ class PhotosTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupStack() {
-        for item in 0...3 {
-            print("\(item)")
-        }
-    }
-
     private func layout() {
         contentView.addSubview(lable)
-        contentView.addSubview(stack)
-        contentView.addSubview(arrow)
-//        contentView.addSubview(button)
-        stack.addArrangedSubview(photoCell1)
-        stack.addArrangedSubview(photoCell2)
-        stack.addArrangedSubview(photoCell3)
-        stack.addArrangedSubview(photoCell4)
 
-//        NSLayoutConstraint.activate([
-//            button.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//        ])
+        contentView.addSubview(arrow)
+        contentView.addSubview(button)
+        contentView.addSubview(photoCollection)
+
+        
+        let insetLayot: CGFloat = 12
+        let height: CGFloat = (UIScreen.main.bounds.width - inset * 5 ) / 4
+
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: contentView.topAnchor),
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        ])
 
 
         NSLayoutConstraint.activate([
-            lable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            lable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            lable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insetLayot),
+            lable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insetLayot),
         ])
 
         NSLayoutConstraint.activate([
-            arrow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            arrow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -insetLayot),
             arrow.centerYAnchor.constraint(equalTo: lable.centerYAnchor),
             arrow.heightAnchor.constraint(equalToConstant: 24),
             arrow.widthAnchor.constraint(equalToConstant: 24)
         ])
-
+        
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: lable.bottomAnchor, constant: 12),
-            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+            photoCollection.topAnchor.constraint(equalTo: lable.bottomAnchor, constant: insetLayot),
+            photoCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insetLayot),
+            photoCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -insetLayot),
+            photoCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -insetLayot),
+            photoCollection.heightAnchor.constraint(equalToConstant: height)
+            
         ])
-
-        NSLayoutConstraint.activate([
-            photoCell1.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4 ),
-            photoCell1.widthAnchor.constraint(equalTo: photoCell1.heightAnchor, multiplier: 1)
-        ])
-
-        NSLayoutConstraint.activate([
-            photoCell2.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4 ),
-            photoCell2.widthAnchor.constraint(equalTo: photoCell2.heightAnchor, multiplier: 1)
-        ])
-
-        NSLayoutConstraint.activate([
-            photoCell3.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4 ),
-            photoCell3.widthAnchor.constraint(equalTo: photoCell3.heightAnchor, multiplier: 1)
-        ])
-
-        NSLayoutConstraint.activate([
-            photoCell4.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4 ),
-            photoCell4.widthAnchor.constraint(equalTo: photoCell4.heightAnchor, multiplier: 1)
-        ])
-
-
     }
 
         //MARK: - func
-
-//    @objc private func didTapTransitionButton() {
-//        let secondVC = ProfileViewController()
-//        UINavigationController.pushViewController(secondVC)
-//    }
-
+    
+    @objc private func didTapTransitionButton() {
+        delegate?.buttonPressed()
+    }
     
 
+}
+
+
+
+// MARK: - extensions
+
+extension PhotosTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = photoCollection.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifire, for: indexPath) as! PhotosCollectionViewCell
+        cell.setupPhotoCell(photo: photosNameArray[indexPath.row])
+        return cell
+    }
+    
+    
+}
+
+extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
+    private var inset: CGFloat { return 8 }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - inset * 5 ) / 4
+        
+        return CGSize(width: width, height: width)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        inset
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        inset
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
 }

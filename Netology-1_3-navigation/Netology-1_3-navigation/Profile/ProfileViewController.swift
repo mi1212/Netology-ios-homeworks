@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Profile"
         self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
         self.setupView()
     }
 
@@ -21,22 +22,27 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifire) // регистрация ячейки
-        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "photoscell") // регистрация ячейки
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifire) // регистрация ячейки постов
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "photocell") // регистрация ячейки фотогалерии
         return tableView
     }()
 
     private func setupView() {
+        
+        
+        
         self.view.addSubview(self.tableView)
 
-        let tableViewTopConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let tableViewLeadingConstraint = self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let tableViewTrailingConstraint = self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let tableViewBottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-
         NSLayoutConstraint.activate([
-            tableViewTopConstraint, tableViewLeadingConstraint, tableViewTrailingConstraint, tableViewBottomConstraint
+            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.title = "Back" // меня название вьюконтроллера чтобы имя кнопки возврата на след вью была "Back"
     }
 }
 
@@ -45,27 +51,23 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        postsArray.count
+        postsArray.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if indexPath == [0, 0] {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "photoscell", for: indexPath)
-            print("\(indexPath)")
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "photocell", for: indexPath) as! PhotosTableViewCell
+            cell.delegate = self
             return cell
-        } else {
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifire, for: indexPath) as! CustomTableViewCell
-            cell.setupCell(post: postsArray[indexPath.row])
-            print("\(indexPath)")
+            cell.setupCell(post: postsArray[indexPath.row - 1])
             return cell
         }
     }
 
-
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        2
-//    }
 
 
 
@@ -89,3 +91,11 @@ extension ProfileViewController: UITableViewDelegate {
     }
 }
 
+extension ProfileViewController: PhotosTableViewCellDelegate {
+    func buttonPressed() {
+        let vc = PhotosViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}
