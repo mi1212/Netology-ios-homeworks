@@ -8,6 +8,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+       static var status: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

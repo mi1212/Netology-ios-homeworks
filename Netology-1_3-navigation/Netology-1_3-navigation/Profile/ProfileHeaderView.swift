@@ -8,20 +8,20 @@
 import UIKit
 
 class ProfileHeaderView: UIView, UITextFieldDelegate {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemGray6
         drawSelf()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-
+    
+    
     private func drawSelf() {
-
+        
         self.addSubview(self.stackView)
         self.addSubview(self.showStatusButton)
         self.addSubview(self.statusTextField)
@@ -29,7 +29,10 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.stackView.addArrangedSubview(self.labelsStackView)
         self.labelsStackView.addArrangedSubview(self.nameLable)
         self.labelsStackView.addArrangedSubview(self.statusLable)
-
+        if ProfileViewController.status != "" {
+            statusLable.text = ProfileViewController.status
+        }
+        
         NSLayoutConstraint.activate([
             self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -37,26 +40,26 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1),
             self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height)
         ])
-
+        
         NSLayoutConstraint.activate([
             self.statusTextField.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16),
             self.statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.statusTextField.leadingAnchor.constraint(equalTo: self.labelsStackView.leadingAnchor),
             self.statusTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
-
+        
         NSLayoutConstraint.activate([
             self.showStatusButton.topAnchor.constraint(equalTo: self.statusTextField.bottomAnchor, constant: 16),
             self.showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-
-
+        
+        
     }
-
-//MARK: - views
-
+    
+    //MARK: - views
+    
     private lazy var showStatusButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
@@ -68,7 +71,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         button.addTarget(self, action: #selector(didTapStatusButton), for: .touchUpInside)
         return button
     }()
-
+    
     private lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Image", in: nil, with: .none)
@@ -80,7 +83,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-
+    
     private lazy var nameLable: UILabel = {
         let label = UILabel()
         label.text = "A.P.Chekhov"
@@ -89,8 +92,8 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    private lazy var statusLable: UILabel = {
+    
+    lazy var statusLable: UILabel = {
         let label = UILabel()
         label.text = "Одинокому везде пустыня."
         label.textColor = .gray
@@ -98,7 +101,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
@@ -114,10 +117,10 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
-
-// MARK: - stacks
-
+    
+    
+    // MARK: - stacks
+    
     private lazy var labelsStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -126,8 +129,8 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-
-
+    
+    
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -135,12 +138,13 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-
-
-// MARK: - funcs
-
+    
+    
+    // MARK: - funcs
+    
     @objc private func didTapStatusButton() {
-         statusLable.text = statusTextField.text
+        ProfileViewController.status = statusTextField.text!
+        statusLable.text = ProfileViewController.status
         self.statusTextField.text = nil
         self.endEditing(true)
     }
