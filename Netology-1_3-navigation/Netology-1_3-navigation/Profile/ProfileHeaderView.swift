@@ -25,8 +25,8 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.addSubview(self.stackView)
         self.addSubview(self.showStatusButton)
         self.addSubview(self.statusTextField)
-        self.stackView.addArrangedSubview(self.profileImage)
-        self.stackView.addArrangedSubview(self.labelsStackView)
+        self.addSubview(self.profileImage)
+        self.addSubview(self.labelsStackView)
         self.labelsStackView.addArrangedSubview(self.nameLable)
         self.labelsStackView.addArrangedSubview(self.statusLable)
         if ProfileViewController.status != "" {
@@ -34,15 +34,21 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         }
         
         NSLayoutConstraint.activate([
-            self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1),
-            self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height)
+            self.profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height),
+            self.profileImage.widthAnchor.constraint(equalToConstant: self.profileImage.frame.width)
         ])
         
         NSLayoutConstraint.activate([
-            self.statusTextField.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16),
+            self.labelsStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+            self.labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.labelsStackView.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 16),
+            self.labelsStackView.bottomAnchor.constraint(equalTo: self.profileImage.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.statusTextField.topAnchor.constraint(equalTo: self.labelsStackView.bottomAnchor, constant: 16),
             self.statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.statusTextField.leadingAnchor.constraint(equalTo: self.labelsStackView.leadingAnchor),
             self.statusTextField.heightAnchor.constraint(equalToConstant: 40)
@@ -54,10 +60,8 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             self.showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        
     }
-    
+        
     //MARK: - views
     
     private lazy var showStatusButton: UIButton = {
