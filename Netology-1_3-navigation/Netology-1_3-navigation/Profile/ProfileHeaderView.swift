@@ -13,6 +13,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         super.init(frame: frame)
         self.backgroundColor = .systemGray6
         drawSelf()
+//        setupGestures()
     }
     
     required init?(coder: NSCoder) {
@@ -25,26 +26,39 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.addSubview(self.stackView)
         self.addSubview(self.showStatusButton)
         self.addSubview(self.statusTextField)
-        self.stackView.addArrangedSubview(self.profileImage)
-        self.stackView.addArrangedSubview(self.labelsStackView)
+        self.addSubview(self.profileImage)
+        self.addSubview(self.labelsStackView)
         self.labelsStackView.addArrangedSubview(self.nameLable)
         self.labelsStackView.addArrangedSubview(self.statusLable)
         if ProfileViewController.status != "" {
             statusLable.text = ProfileViewController.status
         }
         
+        topProfileImage = self.profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
+        leadingProfileImage = self.profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+        heightProfileImage = self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height)
+        widthProfileImage = self.profileImage.widthAnchor.constraint(equalToConstant: self.profileImage.frame.width)
+        
         NSLayoutConstraint.activate([
-            self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1),
-            self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height)
+            topProfileImage,
+            leadingProfileImage,
+            heightProfileImage,
+            widthProfileImage
+//            self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1)
         ])
         
         NSLayoutConstraint.activate([
-            self.statusTextField.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16),
+            self.labelsStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+            self.labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.labelsStackView.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 16),
+//            self.labelsStackView.bottomAnchor.constraint(equalTo: self.profileImage.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.statusTextField.topAnchor.constraint(equalTo: self.labelsStackView.bottomAnchor, constant: 16),
             self.statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.statusTextField.leadingAnchor.constraint(equalTo: self.labelsStackView.leadingAnchor),
+            self.statusTextField.bottomAnchor.constraint(equalTo: self.profileImage.bottomAnchor),
             self.statusTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         
@@ -57,6 +71,60 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         
         
     }
+    
+    private var leadingProfileImage = NSLayoutConstraint()
+    private var topProfileImage = NSLayoutConstraint()
+    private var heightProfileImage = NSLayoutConstraint()
+    private var widthProfileImage = NSLayoutConstraint()
+    private var centerXProfileImage = NSLayoutConstraint()
+    private var centerYProfileImage = NSLayoutConstraint()
+
+//    private func setupGestures() {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+//        profileImage.isUserInteractionEnabled = true
+//        profileImage.addGestureRecognizer(tapGesture)
+//        }
+//
+//    @objc private func tapAction() {
+//
+//        UIView.animateKeyframes(withDuration: 3, delay: 0) {
+//            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.75) {
+//                self.topProfileImage.constant = 1500
+//                self.leadingProfileImage.constant = 1400
+//                self.heightProfileImage.constant = UIScreen.main.bounds.width
+//                self.widthProfileImage.constant = UIScreen.main.bounds.width
+//                let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                blurEffectView.frame = UIScreen.main.bounds
+//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//                self.addSubview(blurEffectView)
+//                self.willRemoveSubview(self.profileImage)
+//                self.addSubview(self.profileImage)
+//                self.layoutIfNeeded()
+//            }
+//
+//        }
+//
+//        let rotateAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
+//        rotateAnimation.valueFunction = CAValueFunction(name: CAValueFunctionName.rotateZ)
+//        rotateAnimation.fromValue = 0
+//        rotateAnimation.toValue = 4 * Float.pi
+//
+//        let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
+//        positionAnimation.fromValue = profileImage.center
+//        positionAnimation.toValue = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+//
+//        let groupAnimation = CAAnimationGroup()
+//        groupAnimation.duration = 2.0
+//        groupAnimation.animations = [rotateAnimation]
+//        groupAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+//        groupAnimation.repeatCount = 1
+//        profileImage.layer.add(groupAnimation, forKey: nil)
+//        profileImage.transform = CGAffineTransform(rotationAngle: CGFloat(4 * Float.pi))
+//        profileImage.layer.position = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+//
+//        print("objc tap")
+//    }
     
     //MARK: - views
     

@@ -17,7 +17,77 @@ class ProfileViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         self.setupView()
+//        drawSelf()
+//        layout()
+//        setupGestures()
+        
     }
+    
+//    private let imageView: UIView = {
+//        let image = UIImageView()
+//        image.backgroundColor = .green
+//        image.image = UIImage(named: "Image", in: nil, with: .none)
+//        image.sizeToFit()
+//        image.layer.borderWidth = 3
+//        image.layer.borderColor = UIColor.white.cgColor
+//        image.layer.cornerRadius = image.frame.height/2
+//        image.clipsToBounds = true
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        return image
+//    }()
+//
+//    private func setupGestures() {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+//        imageView.isUserInteractionEnabled = true
+//        imageView.addGestureRecognizer(tapGesture)
+//        }
+//
+//    @objc private func tapAction() {
+//        let rotateAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
+//        rotateAnimation.valueFunction = CAValueFunction(name: CAValueFunctionName.rotateZ)
+//        rotateAnimation.fromValue = 0
+//        rotateAnimation.toValue = 1.75 * Float.pi
+//
+//        let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
+//        positionAnimation.fromValue = imageView.center
+//        positionAnimation.toValue = CGPoint(x: view.bounds.width - 100, y: imageView.center.y)
+//
+//        let groupAnimation = CAAnimationGroup()
+//        groupAnimation.duration = 2.0
+//        groupAnimation.animations = [rotateAnimation, positionAnimation]
+//        groupAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+//        imageView.layer.add(groupAnimation, forKey: nil)
+//        imageView.transform = CGAffineTransform(rotationAngle: CGFloat(1.75 * Float.pi))
+//        imageView.layer.position = CGPoint(x: view.bounds.width - 100, y: imageView.center.y)
+//
+//        print("objc tap")
+//    }
+
+
+//    private func layout() {
+//        view.addSubview(imageView)
+//
+//        NSLayoutConstraint.activate([
+//
+//            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+//            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+//            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
+//            imageView.heightAnchor.constraint(equalToConstant: imageView.frame.height)
+//        ])
+//    }
+//
+//    private func drawSelf() {
+//        view.addSubview(self.imageView)
+//
+//        NSLayoutConstraint.activate([
+//            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+//            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+//            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
+//            imageView.heightAnchor.constraint(equalToConstant: imageView.frame.height)
+//        ])
+//
+//
+//    }
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -30,9 +100,6 @@ class ProfileViewController: UIViewController {
     }()
 
     private func setupView() {
-        
-        
-        
         self.view.addSubview(self.tableView)
 
         NSLayoutConstraint.activate([
@@ -69,18 +136,10 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
     }
-
-
-
-
-
-
-
-
-
 }
 
 // MARK: - UITableViewDelegate
+
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension //автоматическое вычисление высоты ячейки
@@ -89,7 +148,7 @@ extension ProfileViewController: UITableViewDelegate {
         return ProfileHeaderView()
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        300
+        250
     }
 }
 
@@ -98,6 +157,4 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         let vc = PhotosViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }
