@@ -11,8 +11,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layoutPhotoCell()
-        
-        //setupCell()
     }
     
     required init?(coder: NSCoder) {

@@ -75,16 +75,15 @@ class PhotosTableViewCell: UITableViewCell {
         contentView.addSubview(photoCollection)
 
         
-        let insetLayot: CGFloat = 12
-        let height: CGFloat = (UIScreen.main.bounds.width - inset * 5 ) / 4
+        let insetLayot: CGFloat = 16
+        let height: CGFloat = (UIScreen.main.bounds.width - inset * 3 ) / 4
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: contentView.topAnchor),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            button.topAnchor.constraint(equalTo: arrow.topAnchor),
+            button.trailingAnchor.constraint(equalTo: arrow.trailingAnchor),
+            button.leadingAnchor.constraint(equalTo: arrow.leadingAnchor),
+            button.bottomAnchor.constraint(equalTo: arrow.bottomAnchor),
         ])
-
 
         NSLayoutConstraint.activate([
             lable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insetLayot),
@@ -139,7 +138,7 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     private var inset: CGFloat { return 8 }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - inset * 5 ) / 4
+        let width = (collectionView.bounds.width - inset * 3 ) / 4
         
         return CGSize(width: width, height: width)
         
@@ -151,8 +150,5 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         inset
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
 }
