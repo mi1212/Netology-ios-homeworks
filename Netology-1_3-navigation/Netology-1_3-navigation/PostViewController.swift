@@ -12,11 +12,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray3
-        self.setupView()
         self.setupNavigationBar()
-    }
-
-    private func setupView() {
     }
 
     private func setupNavigationBar() {

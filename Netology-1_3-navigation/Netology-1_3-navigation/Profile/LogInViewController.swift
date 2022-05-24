@@ -9,12 +9,13 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    private let notificationCentre = NotificationCenter.default
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         self.setupView()
-        self.setupKeyboardHiding()
         self.loginView.delegate = self
         self.passView.delegate = self
     }
@@ -91,10 +92,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }()
 
     private lazy var contentView: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        //        $0.backgroundColor = .blue
-        return $0
-    }(UIView())
+        let content = UIView()
+        content.translatesAutoresizingMaskIntoConstraints = false
+        return content
+    }()
 
 
     private lazy var loginView: UITextField = {
@@ -165,7 +166,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
 
-    //MARK: stacks
+    //MARK: - stacks
 
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -185,6 +186,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @objc private func didTapTransitionButton() {
         let secondVC = ProfileViewController()
+//        let secondVC = TestController()
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
 
@@ -206,29 +208,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 extension LoginViewController {
 
-    private func setupKeyboardHiding() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        notificationCentre.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCentre.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        notificationCentre.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCentre.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc func keyboardWillShow(sender: NSNotification) {
-        guard let userInfo = sender.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
-
-        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
-        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
-        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
-
-        if textFieldBottomY > (keyboardTopY - 65) {
-            let textBoxY = convertedTextFieldFrame.origin.y
-            let newFrameY = (textBoxY - keyboardTopY / 2 ) * (-1)
-            view.frame.origin.y = newFrameY
+    @objc private func kbdShow(notification: NSNotification) {
+        if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentInset.bottom = kbdSize.height * 1.4
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbdSize.height, right: 0)
         }
+    }
+
+    @objc private func kbdHide() {
+        scrollView.contentInset = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
     }
 
 }
