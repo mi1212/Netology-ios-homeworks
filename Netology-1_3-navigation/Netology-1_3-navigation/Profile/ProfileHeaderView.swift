@@ -22,6 +22,8 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.backgroundColor = .systemGray6
         drawSelf()
         setupGestures()
+        
+//        vc.delegate = self
     }
        
     required init?(coder: NSCoder) {
@@ -218,7 +220,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             withDuration: 0.5,
             delay: 0,
             options: .curveEaseInOut) {
-                self.profileImage.layer.position = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2 )
+                self.profileImage.layer.position = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
                 self.profileImage.layer.cornerRadius = 0
                 self.profileImage.layer.bounds = CGRect(x: UIScreen.main.bounds.width/2 , y: UIScreen.main.bounds.height/2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
                 self.blurView.layer.opacity = 1

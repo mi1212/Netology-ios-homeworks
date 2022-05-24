@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController{
-
+    
     static var status: String = ""
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController{
         return tableView
     }()
 
-   private func setupView() {
+   func setupView() {
         self.view.addSubview(self.tableView)
 
         NSLayoutConstraint.activate([
