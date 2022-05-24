@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-       static var status: String = ""
+    static var status: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +89,7 @@ class ProfileViewController: UIViewController {
 //
 //    }
 
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,11 +97,13 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifire) // регистрация ячейки постов
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "photocell") // регистрация ячейки фотогалерии
+
         return tableView
     }()
 
     private func setupView() {
         self.view.addSubview(self.tableView)
+
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.view.topAnchor),

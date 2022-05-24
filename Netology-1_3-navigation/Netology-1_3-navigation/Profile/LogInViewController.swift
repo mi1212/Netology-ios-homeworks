@@ -97,6 +97,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return content
     }()
 
+
     private lazy var loginView: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray6

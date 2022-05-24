@@ -106,6 +106,7 @@
 				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
 				FD30FF9727C5053A005961A8 /* Info.plist */,
 				FD394C5F283760700017720D /* testcontroller.swift */,
+
 			);
 			path = "Netology-1_3-navigation";
 			sourceTree = "<group>";
@@ -200,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				FDAAA060283399C800528E74 /* Photo.swift in Sources */,
 				FD22F48228201A310099BA12 /* PhotosTableViewCell.swift in Sources */,
 				FD22F485282053470099BA12 /* PhotosViewController.swift in Sources */,

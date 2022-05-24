@@ -174,6 +174,10 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 2))
+        textField.leftViewMode = .always
+        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 2))
+        textField.rightViewMode = .always
         textField.layer.borderColor = UIColor.black.cgColor
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 2))
         textField.leftViewMode = .always
@@ -185,7 +189,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-    
+ 
     
     // MARK: - stacks
     
