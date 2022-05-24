@@ -8,3 +8,4 @@
 1. Верстка экранов для iOS. Auto Layout
 1. UITableView, UIScrollView, datasource и delegate
 1. CollectionView
+1. Gestures and animation
