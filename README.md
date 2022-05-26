@@ -9,3 +9,4 @@
 1. UITableView, UIScrollView, datasource и delegate
 1. CollectionView
 1. Gestures and animation
+1. Diploma

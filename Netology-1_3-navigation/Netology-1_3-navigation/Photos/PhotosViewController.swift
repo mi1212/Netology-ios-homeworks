@@ -7,13 +7,20 @@
 
 import UIKit
 
+protocol PhotosViewControllerDelegate: AnyObject {
+    func tapCell()
+}
+
 class PhotosViewController: UIViewController {
 
+    weak var delegate: PhotosViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
         setupCollection()
+        setup()
         
     }
     
@@ -25,7 +32,24 @@ class PhotosViewController: UIViewController {
         return array
     }
     
+    private lazy var blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = UIScreen.main.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.alpha = 0
 
+        return blurEffectView
+    }()
+
+    private lazy var crossView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "cross", in: nil, with: .none)
+        image.layer.opacity = 0
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     private func setupCollection() {
         view.addSubview(photoCollection)
 
@@ -36,7 +60,25 @@ class PhotosViewController: UIViewController {
             photoCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-
+    
+    private func setup() {
+        view.addSubview(blurView)
+        view.addSubview(crossView)
+        
+        NSLayoutConstraint.activate([
+            self.crossView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            self.crossView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            self.crossView.heightAnchor.constraint(equalToConstant: 24),
+            self.crossView.widthAnchor.constraint(equalTo: self.crossView.heightAnchor)
+        ])
+    }
+    
+//    private func setupGestures() {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+//        cell.isUserInteractionEnabled = true
+//        cell.addGestureRecognizer(tapGesture)
+//    }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {

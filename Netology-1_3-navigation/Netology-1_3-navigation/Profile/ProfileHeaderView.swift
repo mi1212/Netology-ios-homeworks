@@ -44,6 +44,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.addSubview(self.blurView)
         self.addSubview(self.profileImage)
         self.addSubview(self.crossView)
+        self.addGestureRecognizer(tap)
 
         self.labelsStackView.addArrangedSubview(self.nameLable)
         self.labelsStackView.addArrangedSubview(self.statusLable)
@@ -158,7 +159,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         blurEffectView.frame = UIScreen.main.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.alpha = 0
-
+        
         return blurEffectView
     }()
 
@@ -199,6 +200,15 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.statusTextField.text = nil
         self.endEditing(true)
     }
+    
+    private lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        return tap
+    }()
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
+    }
 
     // MARK: - animation
 
@@ -210,6 +220,9 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         let crossTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCrossAction))
         crossView.isUserInteractionEnabled = true
         crossView.addGestureRecognizer(crossTapGesture)
+        
+        let verificationGesture = UITapGestureRecognizer(target: self, action: #selector(verification))
+        showStatusButton.addGestureRecognizer(verificationGesture)
     }
 
     @objc private func tapAction() {
@@ -258,6 +271,26 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
 
         }
 
+    }
+    
+    @objc private func verification() {
+        
+        statusTextField.backgroundColor = .white
+        
+        if statusTextField.text == "" {
+            shake()
+            statusTextField.backgroundColor = .systemRed
+        } else {didTapStatusButton()}
+    }
+    
+    func shake(duration timeDuration: Double = 0.07, repeat countRepeat: Float = 3){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = timeDuration
+        animation.repeatCount = countRepeat
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: statusTextField.center.x - 10, y: statusTextField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: statusTextField.center.x + 10, y: statusTextField.center.y))
+        self.statusTextField.layer.add(animation, forKey: "position")
     }
 
 }
