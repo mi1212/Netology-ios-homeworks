@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.setupGestures()
         self.loginView.delegate = self
         self.passView.delegate = self
+        
     }
     
     private func setupView() {

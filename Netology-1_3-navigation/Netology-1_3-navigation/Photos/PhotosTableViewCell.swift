@@ -35,7 +35,7 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
     
-    private lazy var photoCollection: UICollectionView = {
+    lazy var photoCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         

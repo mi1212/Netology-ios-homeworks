@@ -7,8 +7,20 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+protocol CustomTableViewCellDelegate: AnyObject {
+    func increaseLikes(likes: Int, isLiked: Bool)
+}
 
+
+class CustomTableViewCell: UITableViewCell, PostsViewControllerDelegate{
+    func increaseViews(views: Int) {
+        self.viewsLable.text = String(views)
+        print("Custom \(views)")
+    }
+    
+
+    weak var delegate: CustomTableViewCellDelegate?
+    
     // MARK: - UIView
     
     private let cellView: UIView = {
@@ -41,11 +53,10 @@ class CustomTableViewCell: UITableViewCell {
         desription.textColor = .systemGray
         desription.numberOfLines = 4
         desription.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        //        desription.numberOfLines = 0
         return desription
     }()
     
-    private let likeView: UIView = {
+    let likeView: UIView = {
         let like = UIView()
         like.translatesAutoresizingMaskIntoConstraints = false
         let status = false
@@ -53,7 +64,7 @@ class CustomTableViewCell: UITableViewCell {
     }()
     
     
-    private let likeImage: UIImageView = {
+    let likeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "like black")
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +72,7 @@ class CustomTableViewCell: UITableViewCell {
         return image
     }()
     
-    private let likesLable: UILabel = {
+    let likesLable: UILabel = {
         let like = UILabel()
         like.translatesAutoresizingMaskIntoConstraints = false
         like.textColor = .black
@@ -85,30 +96,41 @@ class CustomTableViewCell: UITableViewCell {
         return image
     }()
     
-    private let viewsLable: UILabel = {
+    let viewsLable: UILabel = {
         let views = UILabel()
         views.translatesAutoresizingMaskIntoConstraints = false
         views.textColor = .black
         views.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return views
     }()
+    var isLiked : Bool = false
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.layout()
         self.setupGestures()
+        ProfileViewController().delegate? = self
+        PostsViewController().delegate = self
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(post: Post) {
+    func setupCell(post: Post, indexPath: IndexPath) {
         picView.image = UIImage(named: post.image, in: nil, with: .none)
         authorLable.text = post.author
         desriptionTitle.text = post.description
-        likesLable.text = "\(post.likes)"
-        viewsLable.text = "\(post.views)"
+        likesLable.text = "\(ProfileViewController.likesArray[indexPath.row - 1])"
+        viewsLable.text = "\(ProfileViewController.viewsArray[indexPath.row - 1])"
+        isLiked = ProfileViewController.isLikedArray[indexPath.row - 1]
+        
+        if isLiked == false {
+            likeImage.image = UIImage(named: "like black")
+        } else {
+            likeImage.image = UIImage(named: "like red")
+        }
+        
     }
     
     private func layout() {
@@ -121,16 +143,14 @@ class CustomTableViewCell: UITableViewCell {
         viewView.addSubview(viewImage)
         viewView.addSubview(viewsLable)
         
-//        contentView.addSubview(buttonView)
-        
         contentView.addSubview(likeView)
         likeView.addSubview(likeImage)
         likeView.addSubview(likesLable)
-//        contentView.addGestureRecognizer(tap)
         
 
         
         let viewInset: CGFloat = 16
+        let imageInset: CGFloat = 5
         
         NSLayoutConstraint.activate([
             authorLable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: viewInset),
@@ -160,9 +180,9 @@ class CustomTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            likeImage.topAnchor.constraint(equalTo: likeView.topAnchor, constant: 2),
-            likeImage.leadingAnchor.constraint(equalTo: likeView.leadingAnchor, constant: 2),
-            likeImage.trailingAnchor.constraint(equalTo: likeView.trailingAnchor, constant: -2),
+            likeImage.topAnchor.constraint(equalTo: likeView.topAnchor, constant: imageInset),
+            likeImage.leadingAnchor.constraint(equalTo: likeView.leadingAnchor, constant: imageInset),
+            likeImage.trailingAnchor.constraint(equalTo: likeView.trailingAnchor, constant: -imageInset),
             likeImage.heightAnchor.constraint(equalTo: likeImage.widthAnchor),
             
             likesLable.topAnchor.constraint(equalTo: likeImage.bottomAnchor),
@@ -179,9 +199,9 @@ class CustomTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            viewImage.topAnchor.constraint(equalTo: viewView.topAnchor, constant: 2),
-            viewImage.leadingAnchor.constraint(equalTo: viewView.leadingAnchor, constant: 2),
-            viewImage.trailingAnchor.constraint(equalTo: viewView.trailingAnchor, constant: -2),
+            viewImage.topAnchor.constraint(equalTo: viewView.topAnchor, constant: imageInset),
+            viewImage.leadingAnchor.constraint(equalTo: viewView.leadingAnchor, constant: imageInset),
+            viewImage.trailingAnchor.constraint(equalTo: viewView.trailingAnchor, constant: -imageInset),
             viewImage.heightAnchor.constraint(equalTo: viewImage.widthAnchor),
             
             viewsLable.topAnchor.constraint(equalTo: viewImage.bottomAnchor),
@@ -208,46 +228,52 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     @objc private func tapAction() {
-        
-        if self.likeImage.image == UIImage(named: "like black") {
-            
-            
-            
+
+        if isLiked == false {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
                 self.likeImage.transform = CGAffineTransform(scaleX: 2, y: 2)
                 self.likeImage.alpha = 1
                 self.likesLable.alpha = 0
                 self.likeImage.image = UIImage(named: "like red")
                 self.likesLable.text = String(Int(self.likesLable.text!)! + 1)
+                self.delegate?.increaseLikes(likes: Int(self.likesLable.text!)! + 1, isLiked: true)
+                self.isLiked = true
+                print("\(Int(self.likesLable.text!)! + 1)")
             } completion: { _ in
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
                     self.likeImage.transform = CGAffineTransform(scaleX: 1, y: 1)
-//                    self.likeImage.alpha = 0.5
+                    self.likeImage.alpha = 0.5
                     self.likesLable.alpha = 1
+                    self.likeImage.alpha = 0.8
                 }
             }
-        } else if self.likeImage.image == UIImage(named: "like red") {
-            
-            
-            
+        } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
                 self.likeImage.transform = CGAffineTransform(scaleX: 2, y: 2)
                 self.likeImage.alpha = 1
                 self.likesLable.alpha = 0
                 self.likeImage.image = UIImage(named: "like black")
                 self.likesLable.text = String(Int(self.likesLable.text!)! - 1)
+                self.delegate?.increaseLikes(likes: Int(self.likesLable.text!)! + 1, isLiked: false)
+                self.isLiked = false
             } completion: { _ in
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
                     self.likeImage.transform = CGAffineTransform(scaleX: 1, y: 1)
-                    self.likeImage.alpha = 0.5
+                    self.likeImage.alpha = 0.8
                     self.likesLable.alpha = 1
                 }
             }
         }
-        
-        
+    }
+}
+
+extension CustomTableViewCell: ProfileViewControllerDelegate {
+    func increaseViews() {
+        print("CustomCell delegate")
     }
     
+    
 }
+
 
 

@@ -7,10 +7,23 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+protocol ProfileViewControllerDelegate: AnyObject {
+    func increaseViews()
+}
+
+class ProfileViewController: UIViewController{
+
+    
+    
+    weak var delegate: ProfileViewControllerDelegate?
     
     static var status: String = ""
-    static var view: String = ""
+    static var viewsArray: [Int] = [0,0,0,0]
+    static var likesArray: [Int] = [0,0,0,0]
+    static var imageArray: [UIImage]?
+    static var isLikedArray: [Bool] = [false, false, false, false]
+    
+    static var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +31,9 @@ class ProfileViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         self.setupView()
+        self.setupArrays()
+        
+        
     }
     
     private lazy var tableView: UITableView = {
@@ -32,7 +48,6 @@ class ProfileViewController: UIViewController {
     
     func setupView() {
         self.view.addSubview(self.tableView)
-//        self.view.addGestureRecognizer(tap)
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -41,7 +56,17 @@ class ProfileViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
+    }
+    
+    private func setupArrays() {
         
+
+        for item in 0...postsArray.count - 1 {
+            ProfileViewController.viewsArray[item] = postsArray[item].views
+            ProfileViewController.likesArray[item] = postsArray[item].likes
+            ProfileViewController.isLikedArray[item] = postsArray[item].isLiked
+//            ProfileViewController.viewsArray![item] = postsArray[item].views
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,7 +77,7 @@ class ProfileViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         return tap
     }()
-
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -74,7 +99,12 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifire, for: indexPath) as! CustomTableViewCell
-            cell.setupCell(post: postsArray[indexPath.row - 1])
+            cell.setupCell(post: postsArray[indexPath.row - 1], indexPath: indexPath)
+            cell.delegate = self
+//            print(ProfileViewController.likesArray)
+//            print(ProfileViewController.viewsArray)
+//            print(ProfileViewController.imageArray)
+//            print(ProfileViewController.isLikedArray)
             return cell
         }
     }
@@ -95,24 +125,24 @@ extension ProfileViewController: UITableViewDelegate {
         250
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print("tap \(indexPath)")
-        
-        
-        
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tap \(indexPath)")
-                switch indexPath.row {
-                case 1...4 :
-                    let vc = PostsViewController()
-                    vc.setupVC(post:postsArray[indexPath.row - 1])
-                    vc.viewsLable.text = String(Int(vc.viewsLable.text!)! + 1)
-                    self.present(vc, animated: true)
-                default:
-                    break
-                }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.row {
+        case 1...4 :
+            let vc = PostsViewController()
+            vc.setupVC(post:postsArray[indexPath.row - 1], indexPath: indexPath)
+            ProfileViewController.index = indexPath.row - 1
+            postsArray[(indexPath.row - 1)].views = Int(exactly: ProfileViewController.viewsArray[indexPath.row - 1])! + 1
+            self.delegate?.increaseViews()
+            print("ProfileViewController")
+            print(postsArray[(indexPath.row - 1)].views)
+            tableView.reloadData()
+            self.present(vc, animated: true)
+        default:
+            break
+        }
     }
     
 }
@@ -129,8 +159,6 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     }
 }
 
-
-
 extension ProfileViewController: PhotosTableViewCellDelegate {
     func buttonPressed() {
         let vc = PhotosViewController()
@@ -138,3 +166,15 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
     }
 }
 
+extension ProfileViewController: CustomTableViewCellDelegate {
+    func increaseLikes(likes: Int, isLiked: Bool) {
+        print("delegate")
+        ProfileViewController.likesArray[ProfileViewController.index] = likes
+        ProfileViewController.isLikedArray[ProfileViewController.index] = isLiked
+        
+        print("ProfileViewController.likesArray[ProfileViewController.index] - \(ProfileViewController.likesArray[ProfileViewController.index])")
+        print("String(likes) - \(String(likes))")
+//        self.tableView.reloadRows(at: <#T##[IndexPath]#>, with: <#T##UITableView.RowAnimation#>)
+    }
+  
+}
