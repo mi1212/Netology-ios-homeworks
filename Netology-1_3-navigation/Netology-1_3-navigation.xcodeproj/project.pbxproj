@@ -66,9 +66,9 @@
 		FD22F48328201A3A0099BA12 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				FD22F484282053470099BA12 /* PhotosViewController.swift */,
 				FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */,
 				FDD57BBF2831843000B3D1A4 /* PhotosCollectionViewCell.swift */,
-				FD22F484282053470099BA12 /* PhotosViewController.swift */,
 				FDAAA06128339E3C00528E74 /* Photos.swift */,
 				FDAAA05F283399C800528E74 /* Photo.swift */,
 			);

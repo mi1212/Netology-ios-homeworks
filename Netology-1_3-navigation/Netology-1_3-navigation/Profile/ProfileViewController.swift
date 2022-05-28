@@ -13,8 +13,6 @@ protocol ProfileViewControllerDelegate: AnyObject {
 
 class ProfileViewController: UIViewController{
 
-    
-    
     weak var delegate: ProfileViewControllerDelegate?
     
     static var status: String = ""
@@ -32,8 +30,6 @@ class ProfileViewController: UIViewController{
         self.navigationController?.navigationBar.isHidden = true
         self.setupView()
         self.setupArrays()
-        
-        
     }
     
     private lazy var tableView: UITableView = {

@@ -8,10 +8,11 @@
 import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layoutPhotoCell()
-        setupGestures()
+//        setupGestures()
     }
     
     required init?(coder: NSCoder) {
@@ -50,9 +51,12 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         cellImage.clipsToBounds = true
         return cellImage
     }()
+    
+    var photoName: String?
 
     func setupPhotoCell(photo: Photo) {
         photoView.image = UIImage(named: photo.name, in: nil, with: .none)
+        photoName = photo.name
     }
     
     private func layoutPhotoCell() {
@@ -70,7 +74,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
 
 extension PhotosCollectionViewCell: PhotosViewControllerDelegate {
     func tapCell() {
-         
+        
     }
     
     
