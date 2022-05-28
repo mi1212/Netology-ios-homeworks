@@ -8,8 +8,7 @@
 import UIKit
 
 protocol PostsViewControllerDelegate: AnyObject {
-    func increaseViews(views: Int)
-//    func increaseLikes(likes: Int)
+    func increaseViews(views: Int, indexPath: IndexPath)
 }
 
 class PostsViewController: UIViewController {
@@ -20,7 +19,6 @@ class PostsViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         layout()
-//        setupGestures()
     }
     
     private func layout() {
@@ -98,6 +96,8 @@ class PostsViewController: UIViewController {
     
     var views = 0
     
+    var indexPath: IndexPath = [0, 0]
+    
 //
     
     func setupVC(post: Post, indexPath: IndexPath) {
@@ -105,10 +105,11 @@ class PostsViewController: UIViewController {
         authorLable.text = post.author
         desriptionTitle.text = post.description
         views = post.views
+        self.indexPath = indexPath
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        delegate?.increaseViews(views: views)
+        delegate?.increaseViews(views: self.views + 1, indexPath: self.indexPath)
     }
 }
 

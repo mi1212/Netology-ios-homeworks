@@ -59,13 +59,10 @@ class ProfileViewController: UIViewController{
     }
     
     private func setupArrays() {
-        
-
         for item in 0...postsArray.count - 1 {
             ProfileViewController.viewsArray[item] = postsArray[item].views
             ProfileViewController.likesArray[item] = postsArray[item].likes
             ProfileViewController.isLikedArray[item] = postsArray[item].isLiked
-//            ProfileViewController.viewsArray![item] = postsArray[item].views
         }
     }
     
@@ -101,10 +98,6 @@ extension ProfileViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifire, for: indexPath) as! CustomTableViewCell
             cell.setupCell(post: postsArray[indexPath.row - 1], indexPath: indexPath)
             cell.delegate = self
-//            print(ProfileViewController.likesArray)
-//            print(ProfileViewController.viewsArray)
-//            print(ProfileViewController.imageArray)
-//            print(ProfileViewController.isLikedArray)
             return cell
         }
     }
@@ -133,11 +126,9 @@ extension ProfileViewController: UITableViewDelegate {
         case 1...4 :
             let vc = PostsViewController()
             vc.setupVC(post:postsArray[indexPath.row - 1], indexPath: indexPath)
-            ProfileViewController.index = indexPath.row - 1
-            postsArray[(indexPath.row - 1)].views = Int(exactly: ProfileViewController.viewsArray[indexPath.row - 1])! + 1
-            self.delegate?.increaseViews()
+            ProfileViewController.viewsArray[(indexPath.row - 1)] += 1
             print("ProfileViewController")
-            print(postsArray[(indexPath.row - 1)].views)
+            print(ProfileViewController.viewsArray[(indexPath.row - 1)])
             tableView.reloadData()
             self.present(vc, animated: true)
         default:
@@ -163,18 +154,19 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
     func buttonPressed() {
         let vc = PhotosViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+        tableView.reloadData()
     }
 }
 
 extension ProfileViewController: CustomTableViewCellDelegate {
-    func increaseLikes(likes: Int, isLiked: Bool) {
-        print("delegate")
-        ProfileViewController.likesArray[ProfileViewController.index] = likes
-        ProfileViewController.isLikedArray[ProfileViewController.index] = isLiked
-        
-        print("ProfileViewController.likesArray[ProfileViewController.index] - \(ProfileViewController.likesArray[ProfileViewController.index])")
-        print("String(likes) - \(String(likes))")
-//        self.tableView.reloadRows(at: <#T##[IndexPath]#>, with: <#T##UITableView.RowAnimation#>)
+    func increaseLikes(likes: Int, isLiked: Bool, indexPath: IndexPath) {
+        ProfileViewController.likesArray[indexPath.row - 1] = likes
+        ProfileViewController.isLikedArray[indexPath.row - 1] = isLiked
     }
-  
+}
+
+extension ProfileViewController: PostsViewControllerDelegate {
+        func increaseViews(views: Int, indexPath: IndexPath) {
+            ProfileViewController.viewsArray[indexPath.row - 1] = views
+    }
 }

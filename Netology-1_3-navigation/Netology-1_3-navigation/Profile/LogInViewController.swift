@@ -242,57 +242,57 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passView.backgroundColor = .systemGray6
         alertView.alpha = 0
         
-        didTapTransitionButton()
+//        didTapTransitionButton()
                 
-//        if self.loginView.text == "" && self.passView.text == "" {
-//
-//            shake()
-//            loginView.backgroundColor = .systemRed
-//            passView.backgroundColor = .systemRed
-//
-//            if (passView.text?.count)! < 8 {
-//                alertView.alpha = 1
-//            }
-//        } else if self.loginView.text == "" || self.passView.text == "" {
-//
-//            shake()
-//
-//            if self.loginView.text == "" {
-//                loginView.backgroundColor = .systemRed
-//                if (passView.text?.count)! < 8 {
-//                    passView.backgroundColor = .systemRed
-//                    alertView.alpha = 1
-//                    shake()}
-//            } else {
-//                passView.backgroundColor = .systemRed
-//                if (passView.text?.count)! < 8 {
-//                    alertView.alpha = 1
-//                    shake()}
-//            }
-//
-//        } else if (passView.text?.count)! < 8 {
-//            passView.backgroundColor = .systemRed
-//            alertView.alpha = 1
-//            shake()
-//
-//        } else if self.loginView.text != "test@mail.ru" && self.passView.text != "123456qwe" {
-//
-//            self.present(alert, animated: true, completion: nil)
-//
-//        } else if self.loginView.text != "test@mail.ru" || self.passView.text != "123456qwe" {
-//
-//            if self.loginView.text != "test@mail.ru" {
-//
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//            else {
-//
-//                self.present(alert, animated: true, completion: nil)
-//
-//            }
-//        } else {
-//            didTapTransitionButton()
-//        }
+        if self.loginView.text == "" && self.passView.text == "" {
+
+            shake()
+            loginView.backgroundColor = .systemRed
+            passView.backgroundColor = .systemRed
+
+            if (passView.text?.count)! < 8 {
+                alertView.alpha = 1
+            }
+        } else if self.loginView.text == "" || self.passView.text == "" {
+
+            shake()
+
+            if self.loginView.text == "" {
+                loginView.backgroundColor = .systemRed
+                if (passView.text?.count)! < 8 {
+                    passView.backgroundColor = .systemRed
+                    alertView.alpha = 1
+                    shake()}
+            } else {
+                passView.backgroundColor = .systemRed
+                if (passView.text?.count)! < 8 {
+                    alertView.alpha = 1
+                    shake()}
+            }
+
+        } else if (passView.text?.count)! < 8 {
+            passView.backgroundColor = .systemRed
+            alertView.alpha = 1
+            shake()
+
+        } else if self.loginView.text != "test@mail.ru" && self.passView.text != "123456qwe" {
+
+            self.present(alert, animated: true, completion: nil)
+
+        } else if self.loginView.text != "test@mail.ru" || self.passView.text != "123456qwe" {
+
+            if self.loginView.text != "test@mail.ru" {
+
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+
+                self.present(alert, animated: true, completion: nil)
+
+            }
+        } else {
+            didTapTransitionButton()
+        }
         
         
     }

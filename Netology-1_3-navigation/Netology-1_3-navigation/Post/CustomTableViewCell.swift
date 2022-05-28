@@ -8,16 +8,11 @@
 import UIKit
 
 protocol CustomTableViewCellDelegate: AnyObject {
-    func increaseLikes(likes: Int, isLiked: Bool)
+    func increaseLikes(likes: Int, isLiked: Bool, indexPath: IndexPath)
 }
 
 
-class CustomTableViewCell: UITableViewCell, PostsViewControllerDelegate{
-    func increaseViews(views: Int) {
-        self.viewsLable.text = String(views)
-        print("Custom \(views)")
-    }
-    
+class CustomTableViewCell: UITableViewCell {
 
     weak var delegate: CustomTableViewCellDelegate?
     
@@ -105,12 +100,14 @@ class CustomTableViewCell: UITableViewCell, PostsViewControllerDelegate{
     }()
     var isLiked : Bool = false
     
+    var indexPath: IndexPath = [0, 0]
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.layout()
         self.setupGestures()
         ProfileViewController().delegate? = self
-        PostsViewController().delegate = self
+//        PostsViewController().delegate? = self
     }
     
     required init?(coder: NSCoder) {
@@ -124,6 +121,8 @@ class CustomTableViewCell: UITableViewCell, PostsViewControllerDelegate{
         likesLable.text = "\(ProfileViewController.likesArray[indexPath.row - 1])"
         viewsLable.text = "\(ProfileViewController.viewsArray[indexPath.row - 1])"
         isLiked = ProfileViewController.isLikedArray[indexPath.row - 1]
+        self.indexPath = indexPath
+        print(self.indexPath)
         
         if isLiked == false {
             likeImage.image = UIImage(named: "like black")
@@ -231,14 +230,16 @@ class CustomTableViewCell: UITableViewCell, PostsViewControllerDelegate{
 
         if isLiked == false {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
+                print("Tapaction")
                 self.likeImage.transform = CGAffineTransform(scaleX: 2, y: 2)
                 self.likeImage.alpha = 1
                 self.likesLable.alpha = 0
                 self.likeImage.image = UIImage(named: "like red")
                 self.likesLable.text = String(Int(self.likesLable.text!)! + 1)
-                self.delegate?.increaseLikes(likes: Int(self.likesLable.text!)! + 1, isLiked: true)
+                
                 self.isLiked = true
-                print("\(Int(self.likesLable.text!)! + 1)")
+                print("Tapaction \(Int(self.likesLable.text!)!)")
+                self.delegate?.increaseLikes(likes: Int(self.likesLable.text!)!, isLiked: self.isLiked, indexPath: self.indexPath)
             } completion: { _ in
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
                     self.likeImage.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -254,8 +255,11 @@ class CustomTableViewCell: UITableViewCell, PostsViewControllerDelegate{
                 self.likesLable.alpha = 0
                 self.likeImage.image = UIImage(named: "like black")
                 self.likesLable.text = String(Int(self.likesLable.text!)! - 1)
-                self.delegate?.increaseLikes(likes: Int(self.likesLable.text!)! + 1, isLiked: false)
                 self.isLiked = false
+                print(" Tapaction \(Int(self.likesLable.text!)!)")
+                
+                
+                self.delegate?.increaseLikes(likes: Int(self.likesLable.text!)!, isLiked: false, indexPath: self.indexPath)
             } completion: { _ in
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
                     self.likeImage.transform = CGAffineTransform(scaleX: 1, y: 1)
