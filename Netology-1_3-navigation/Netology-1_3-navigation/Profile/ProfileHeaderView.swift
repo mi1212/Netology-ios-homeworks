@@ -7,32 +7,69 @@
 
 import UIKit
 
+protocol ProfileHeaderViewDelegate: AnyObject {
+    func profileImageTap()
+    func profileImageTapScroll()
+}
+
+
 class ProfileHeaderView: UIView, UITextFieldDelegate {
+
+    weak var delegate: ProfileHeaderViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemGray6
         drawSelf()
-//        setupGestures()
+        setupGestures()
+        
+//        vc.delegate = self
+
     }
-    
+       
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    var heightProfileImage = NSLayoutConstraint()
+    var widthProfileImage = NSLayoutConstraint()
+    var topProfileImage =  NSLayoutConstraint()
+    var leadingProfileImage = NSLayoutConstraint()
     
     private func drawSelf() {
         
         self.addSubview(self.stackView)
         self.addSubview(self.showStatusButton)
         self.addSubview(self.statusTextField)
-        self.addSubview(self.profileImage)
         self.addSubview(self.labelsStackView)
+        self.addSubview(self.blurView)
+        self.addSubview(self.profileImage)
+        self.addSubview(self.crossView)
+
         self.labelsStackView.addArrangedSubview(self.nameLable)
         self.labelsStackView.addArrangedSubview(self.statusLable)
         if ProfileViewController.status != "" {
             statusLable.text = ProfileViewController.status
         }
+
+        topProfileImage = self.profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
+        leadingProfileImage = self.profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+        heightProfileImage = self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height)
+        widthProfileImage = self.profileImage.widthAnchor.constraint(equalToConstant: self.profileImage.frame.width)
+
+        NSLayoutConstraint.activate([
+            topProfileImage,
+            leadingProfileImage,
+            heightProfileImage,
+            widthProfileImage
+        ])
+
+        NSLayoutConstraint.activate([
+            self.crossView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.crossView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.crossView.heightAnchor.constraint(equalToConstant: 24),
+            self.crossView.widthAnchor.constraint(equalTo: self.crossView.heightAnchor)
+        ])
         
         topProfileImage = self.profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
         leadingProfileImage = self.profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
@@ -40,18 +77,9 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         widthProfileImage = self.profileImage.widthAnchor.constraint(equalToConstant: self.profileImage.frame.width)
         
         NSLayoutConstraint.activate([
-            topProfileImage,
-            leadingProfileImage,
-            heightProfileImage,
-            widthProfileImage
-//            self.profileImage.heightAnchor.constraint(equalTo: self.profileImage.widthAnchor, multiplier: 1)
-        ])
-        
-        NSLayoutConstraint.activate([
             self.labelsStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
             self.labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.labelsStackView.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 16),
-//            self.labelsStackView.bottomAnchor.constraint(equalTo: self.profileImage.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -68,64 +96,8 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             self.showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        
     }
-    
-    private var leadingProfileImage = NSLayoutConstraint()
-    private var topProfileImage = NSLayoutConstraint()
-    private var heightProfileImage = NSLayoutConstraint()
-    private var widthProfileImage = NSLayoutConstraint()
-    private var centerXProfileImage = NSLayoutConstraint()
-    private var centerYProfileImage = NSLayoutConstraint()
-
-//    private func setupGestures() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-//        profileImage.isUserInteractionEnabled = true
-//        profileImage.addGestureRecognizer(tapGesture)
-//        }
-//
-//    @objc private func tapAction() {
-//
-//        UIView.animateKeyframes(withDuration: 3, delay: 0) {
-//            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.75) {
-//                self.topProfileImage.constant = 1500
-//                self.leadingProfileImage.constant = 1400
-//                self.heightProfileImage.constant = UIScreen.main.bounds.width
-//                self.widthProfileImage.constant = UIScreen.main.bounds.width
-//                let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//                blurEffectView.frame = UIScreen.main.bounds
-//                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//                self.addSubview(blurEffectView)
-//                self.willRemoveSubview(self.profileImage)
-//                self.addSubview(self.profileImage)
-//                self.layoutIfNeeded()
-//            }
-//
-//        }
-//
-//        let rotateAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
-//        rotateAnimation.valueFunction = CAValueFunction(name: CAValueFunctionName.rotateZ)
-//        rotateAnimation.fromValue = 0
-//        rotateAnimation.toValue = 4 * Float.pi
-//
-//        let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
-//        positionAnimation.fromValue = profileImage.center
-//        positionAnimation.toValue = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
-//
-//        let groupAnimation = CAAnimationGroup()
-//        groupAnimation.duration = 2.0
-//        groupAnimation.animations = [rotateAnimation]
-//        groupAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-//        groupAnimation.repeatCount = 1
-//        profileImage.layer.add(groupAnimation, forKey: nil)
-//        profileImage.transform = CGAffineTransform(rotationAngle: CGFloat(4 * Float.pi))
-//        profileImage.layer.position = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
-//
-//        print("objc tap")
-//    }
-    
+  
     //MARK: - views
     
     private lazy var showStatusButton: UIButton = {
@@ -189,8 +161,25 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
- 
-    
+
+    private lazy var blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = UIScreen.main.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.alpha = 0
+
+        return blurEffectView
+    }()
+
+    private lazy var crossView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "cross", in: nil, with: .none)
+        image.layer.opacity = 0
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+
     // MARK: - stacks
     
     private lazy var labelsStackView: UIStackView = {
@@ -220,4 +209,67 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.statusTextField.text = nil
         self.endEditing(true)
     }
+
+    // MARK: - animation
+
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(tapGesture)
+
+        let crossTapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCrossAction))
+        crossView.isUserInteractionEnabled = true
+        crossView.addGestureRecognizer(crossTapGesture)
+    }
+
+    @objc private func tapAction() {
+
+        delegate?.profileImageTap()
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            options: .curveEaseInOut) {
+                self.profileImage.layer.position = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+                self.profileImage.layer.cornerRadius = 0
+                self.profileImage.layer.bounds = CGRect(x: UIScreen.main.bounds.width/2 , y: UIScreen.main.bounds.height/2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+                self.blurView.layer.opacity = 1
+            } completion: { _ in
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+                    self.crossView.layer.opacity = 1
+                } completion: { _ in
+                }
+            }
+    }
+
+    @objc private func tapCrossAction() {
+        
+        delegate?.profileImageTapScroll()
+
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
+            self.crossView.layer.opacity = 0
+        } completion: { _ in
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
+
+                self.profileImage.layer.position = CGPoint(x: 16 + (self.profileImage.image?.size.height)!/2, y: 16 + (self.profileImage.image?.size.height)!/2)
+                self.profileImage.layer.cornerRadius = CGFloat((self.profileImage.image?.size.height)!/2)
+                self.profileImage.layer.bounds = CGRect(
+                    x: 16 + (self.profileImage.image?.size.height)!/2,
+                    y: 16 + (self.profileImage.image?.size.height)!/2,
+                    width: (self.profileImage.image?.size.height)!,
+                    height: (self.profileImage.image?.size.height)!
+                )
+
+                self.blurView.layer.opacity = 0
+
+            } completion: { _ in
+
+            }
+
+        }
+
+    }
+
 }
+
+

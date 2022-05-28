@@ -7,87 +7,24 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController{
     
     static var status: String = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Profile"
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
-        self.setupView()
-//        drawSelf()
-//        layout()
-//        setupGestures()
-        
+        self.setupView()   
     }
     
-//    private let imageView: UIView = {
-//        let image = UIImageView()
-//        image.backgroundColor = .green
-//        image.image = UIImage(named: "Image", in: nil, with: .none)
-//        image.sizeToFit()
-//        image.layer.borderWidth = 3
-//        image.layer.borderColor = UIColor.white.cgColor
-//        image.layer.cornerRadius = image.frame.height/2
-//        image.clipsToBounds = true
-//        image.translatesAutoresizingMaskIntoConstraints = false
-//        return image
-//    }()
-//
-//    private func setupGestures() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-//        imageView.isUserInteractionEnabled = true
-//        imageView.addGestureRecognizer(tapGesture)
-//        }
-//
-//    @objc private func tapAction() {
-//        let rotateAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
-//        rotateAnimation.valueFunction = CAValueFunction(name: CAValueFunctionName.rotateZ)
-//        rotateAnimation.fromValue = 0
-//        rotateAnimation.toValue = 1.75 * Float.pi
-//
-//        let positionAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.position))
-//        positionAnimation.fromValue = imageView.center
-//        positionAnimation.toValue = CGPoint(x: view.bounds.width - 100, y: imageView.center.y)
-//
-//        let groupAnimation = CAAnimationGroup()
-//        groupAnimation.duration = 2.0
-//        groupAnimation.animations = [rotateAnimation, positionAnimation]
-//        groupAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-//        imageView.layer.add(groupAnimation, forKey: nil)
-//        imageView.transform = CGAffineTransform(rotationAngle: CGFloat(1.75 * Float.pi))
-//        imageView.layer.position = CGPoint(x: view.bounds.width - 100, y: imageView.center.y)
-//
-//        print("objc tap")
-//    }
-
-
-//    private func layout() {
-//        view.addSubview(imageView)
-//
-//        NSLayoutConstraint.activate([
-//
-//            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-//            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
-//            imageView.heightAnchor.constraint(equalToConstant: imageView.frame.height)
-//        ])
-//    }
-//
-//    private func drawSelf() {
-//        view.addSubview(self.imageView)
-//
-//        NSLayoutConstraint.activate([
-//            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-//            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
-//            imageView.heightAnchor.constraint(equalToConstant: imageView.frame.height)
-//        ])
-//
-//
-//    }
+    var heightProfileImage = NSLayoutConstraint()
+    var widthProfileImage = NSLayoutConstraint()
+    var topProfileImage =  NSLayoutConstraint()
+    var leadingProfileImage = NSLayoutConstraint()
+    
+    private var isExpanded = false
 
 
     private lazy var tableView: UITableView = {
@@ -101,7 +38,7 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
 
-    private func setupView() {
+   func setupView() {
         self.view.addSubview(self.tableView)
 
 
@@ -111,11 +48,13 @@ class ProfileViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
+       
     }
-    
+        
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationItem.title = "Back" // меня название вьюконтроллера чтобы имя кнопки возврата на след вью была "Back"
+        self.navigationItem.title = "Back" // меняет название вьюконтроллера чтобы имя кнопки возврата на след вью была "Back"
     }
+ 
 }
 
 
@@ -125,9 +64,9 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         postsArray.count + 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "photocell", for: indexPath) as! PhotosTableViewCell
@@ -148,7 +87,9 @@ extension ProfileViewController: UITableViewDelegate {
         UITableView.automaticDimension //автоматическое вычисление высоты ячейки
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return ProfileHeaderView()
+        let header = ProfileHeaderView()
+        header.delegate = self
+        return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         250
@@ -161,3 +102,15 @@ extension ProfileViewController: PhotosTableViewCellDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+
+extension ProfileViewController: ProfileHeaderViewDelegate {
+    func profileImageTapScroll() {
+        self.tableView.isScrollEnabled = true
+    }
+
+    func profileImageTap() {
+        self.tableView.isScrollEnabled = false
+    }
+}
+

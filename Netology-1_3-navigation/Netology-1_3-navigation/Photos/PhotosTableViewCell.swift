@@ -74,10 +74,19 @@ class PhotosTableViewCell: UITableViewCell {
         contentView.addSubview(button)
         contentView.addSubview(photoCollection)
 
+        
         let insetLayot: CGFloat = 16
-        let height: CGFloat = (UIScreen.main.bounds.width - inset * 5 ) / 4
+        let height: CGFloat = (UIScreen.main.bounds.width - inset * 3 ) / 4
 
         NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: arrow.topAnchor),
+            button.trailingAnchor.constraint(equalTo: arrow.trailingAnchor),
+            button.leadingAnchor.constraint(equalTo: arrow.leadingAnchor),
+            button.bottomAnchor.constraint(equalTo: arrow.bottomAnchor),
+        ])
+
+        NSLayoutConstraint.activate([
+
             lable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insetLayot),
             lable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insetLayot),
         ])
