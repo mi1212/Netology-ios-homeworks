@@ -97,6 +97,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return content
     }()
 
+
     private lazy var loginView: UITextField = {
         let text = UITextField()
         text.backgroundColor = .systemGray6
@@ -185,6 +186,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @objc private func didTapTransitionButton() {
         let secondVC = ProfileViewController()
+//        let secondVC = TestController()
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
 

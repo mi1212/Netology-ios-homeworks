@@ -15,6 +15,7 @@
 		FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9227C5053A005961A8 /* Assets.xcassets */; };
 		FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA727C56F1B005961A8 /* FeedViewController.swift */; };
 		FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFAB27C57D32005961A8 /* PostViewController.swift */; };
+		FD394C60283760700017720D /* testcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD394C5F283760700017720D /* testcontroller.swift */; };
 		FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7318C127C6DA9800913FD4 /* InfoViewController.swift */; };
 		FD9CD43D27E8DA780072CEB9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */; };
 		FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0BE5927EB10F400A2767E /* Post.swift */; };
@@ -38,6 +39,7 @@
 		FD30FF9727C5053A005961A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30FFA727C56F1B005961A8 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FD30FFAB27C57D32005961A8 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		FD394C5F283760700017720D /* testcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testcontroller.swift; sourceTree = "<group>"; };
 		FD7318C127C6DA9800913FD4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FDA0BE5927EB10F400A2767E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -103,6 +105,8 @@
 				FD7318C127C6DA9800913FD4 /* InfoViewController.swift */,
 				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
 				FD30FF9727C5053A005961A8 /* Info.plist */,
+				FD394C5F283760700017720D /* testcontroller.swift */,
+
 			);
 			path = "Netology-1_3-navigation";
 			sourceTree = "<group>";
@@ -197,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				FDAAA060283399C800528E74 /* Photo.swift in Sources */,
 				FD22F48228201A310099BA12 /* PhotosTableViewCell.swift in Sources */,
 				FD22F485282053470099BA12 /* PhotosViewController.swift in Sources */,
@@ -214,6 +219,7 @@
 				FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */,
 				FDC69E2F281D7B05003D98BE /* CustomTableViewCell.swift in Sources */,
 				FDC69E31281D88F5003D98BE /* UIView+Extantion.swift in Sources */,
+				FD394C60283760700017720D /* testcontroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

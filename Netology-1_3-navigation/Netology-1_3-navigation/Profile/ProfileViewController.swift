@@ -16,8 +16,7 @@ class ProfileViewController: UIViewController{
         self.title = "Profile"
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
-        self.setupView()
-        
+        self.setupView()   
     }
     
     var heightProfileImage = NSLayoutConstraint()
@@ -27,6 +26,7 @@ class ProfileViewController: UIViewController{
     
     private var isExpanded = false
 
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,11 +34,13 @@ class ProfileViewController: UIViewController{
         tableView.delegate = self
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifire) // регистрация ячейки постов
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "photocell") // регистрация ячейки фотогалерии
+
         return tableView
     }()
 
    func setupView() {
         self.view.addSubview(self.tableView)
+
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.view.topAnchor),

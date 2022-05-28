@@ -24,6 +24,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         setupGestures()
         
 //        vc.delegate = self
+
     }
        
     required init?(coder: NSCoder) {
@@ -70,6 +71,11 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             self.crossView.widthAnchor.constraint(equalTo: self.crossView.heightAnchor)
         ])
         
+        topProfileImage = self.profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
+        leadingProfileImage = self.profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+        heightProfileImage = self.profileImage.heightAnchor.constraint(equalToConstant: self.profileImage.frame.height)
+        widthProfileImage = self.profileImage.widthAnchor.constraint(equalToConstant: self.profileImage.frame.width)
+        
         NSLayoutConstraint.activate([
             self.labelsStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
             self.labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
@@ -91,7 +97,7 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-
+  
     //MARK: - views
     
     private lazy var showStatusButton: UIButton = {
@@ -140,6 +146,10 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 2))
+        textField.leftViewMode = .always
+        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 2))
+        textField.rightViewMode = .always
         textField.layer.borderColor = UIColor.black.cgColor
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 2))
         textField.leftViewMode = .always
