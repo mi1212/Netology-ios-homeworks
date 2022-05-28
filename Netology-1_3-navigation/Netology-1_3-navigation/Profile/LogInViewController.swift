@@ -242,7 +242,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passView.backgroundColor = .systemGray6
         alertView.alpha = 0
         
-        didTapTransitionButton()
+//        didTapTransitionButton()
                 
         if self.loginView.text == "" && self.passView.text == "" {
 
