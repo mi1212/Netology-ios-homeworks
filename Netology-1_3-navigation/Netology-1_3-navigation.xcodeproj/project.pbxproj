@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD11D5FF27EAF30000CFFAE9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD11D5FE27EAF30000CFFAE9 /* ProfileViewController.swift */; };
+		FD22F48228201A310099BA12 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */; };
+		FD22F485282053470099BA12 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22F484282053470099BA12 /* PhotosViewController.swift */; };
+		FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8927C50529005961A8 /* AppDelegate.swift */; };
+		FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FF8B27C50529005961A8 /* SceneDelegate.swift */; };
+		FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30FF9227C5053A005961A8 /* Assets.xcassets */; };
+		FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFA727C56F1B005961A8 /* FeedViewController.swift */; };
+		FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30FFAB27C57D32005961A8 /* PostViewController.swift */; };
+		FD394C60283760700017720D /* testcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD394C5F283760700017720D /* testcontroller.swift */; };
+		FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7318C127C6DA9800913FD4 /* InfoViewController.swift */; };
+		FD9CD43D27E8DA780072CEB9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */; };
+		FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0BE5927EB10F400A2767E /* Post.swift */; };
+		FDA0BE5C27EB121C00A2767E /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0BE5B27EB121C00A2767E /* Posts.swift */; };
+		FDAAA060283399C800528E74 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAAA05F283399C800528E74 /* Photo.swift */; };
+		FDAAA06228339E3C00528E74 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAAA06128339E3C00528E74 /* Photos.swift */; };
+		FDC69E2F281D7B05003D98BE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E2E281D7B04003D98BE /* CustomTableViewCell.swift */; };
+		FDC69E31281D88F5003D98BE /* UIView+Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E30281D88F5003D98BE /* UIView+Extantion.swift */; };
+		FDC69E35281DC880003D98BE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC69E34281DC880003D98BE /* ProfileHeaderView.swift */; };
+		FDCBE1A7283E580E005B54A6 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCBE1A6283E580D005B54A6 /* PostsViewController.swift */; };
+		FDD57BC02831843000B3D1A4 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD57BBF2831843000B3D1A4 /* PhotosCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FD11D5FE27EAF30000CFFAE9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		FD22F484282053470099BA12 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		FD30FF8627C50529005961A8 /* Netology-1_3-navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netology-1_3-navigation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD30FF8927C50529005961A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FD30FF8B27C50529005961A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FD30FF9227C5053A005961A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FD30FF9727C5053A005961A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD30FFA727C56F1B005961A8 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		FD30FFAB27C57D32005961A8 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		FD394C5F283760700017720D /* testcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testcontroller.swift; sourceTree = "<group>"; };
+		FD7318C127C6DA9800913FD4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		FDA0BE5927EB10F400A2767E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FDA0BE5B27EB121C00A2767E /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		FDAAA05F283399C800528E74 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		FDAAA06128339E3C00528E74 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		FDC69E2E281D7B04003D98BE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		FDC69E30281D88F5003D98BE /* UIView+Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extantion.swift"; sourceTree = "<group>"; };
+		FDC69E34281DC880003D98BE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		FDCBE1A6283E580D005B54A6 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		FDD57BBF2831843000B3D1A4 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD30FF8327C50529005961A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD22F48328201A3A0099BA12 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				FD22F484282053470099BA12 /* PhotosViewController.swift */,
+				FD22F48128201A300099BA12 /* PhotosTableViewCell.swift */,
+				FDD57BBF2831843000B3D1A4 /* PhotosCollectionViewCell.swift */,
+				FDAAA06128339E3C00528E74 /* Photos.swift */,
+				FDAAA05F283399C800528E74 /* Photo.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		FD30FF7D27C50529005961A8 = {
+			isa = PBXGroup;
+			children = (
+				FD30FF8827C50529005961A8 /* Netology-1_3-navigation */,
+				FD30FF8727C50529005961A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD30FF8727C50529005961A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD30FF8627C50529005961A8 /* Netology-1_3-navigation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD30FF8827C50529005961A8 /* Netology-1_3-navigation */ = {
+			isa = PBXGroup;
+			children = (
+				FDA0BE5827EB10DE00A2767E /* Post */,
+				FD7D880E27DB575500AF9EDC /* Profile */,
+				FD22F48328201A3A0099BA12 /* Photos */,
+				FD30FF8927C50529005961A8 /* AppDelegate.swift */,
+				FDC69E30281D88F5003D98BE /* UIView+Extantion.swift */,
+				FD30FF8B27C50529005961A8 /* SceneDelegate.swift */,
+				FD30FFA727C56F1B005961A8 /* FeedViewController.swift */,
+				FD30FFAB27C57D32005961A8 /* PostViewController.swift */,
+				FD7318C127C6DA9800913FD4 /* InfoViewController.swift */,
+				FD30FF9227C5053A005961A8 /* Assets.xcassets */,
+				FD30FF9727C5053A005961A8 /* Info.plist */,
+				FD394C5F283760700017720D /* testcontroller.swift */,
+
+			);
+			path = "Netology-1_3-navigation";
+			sourceTree = "<group>";
+		};
+		FD7D880E27DB575500AF9EDC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FDC69E34281DC880003D98BE /* ProfileHeaderView.swift */,
+				FD9CD43C27E8DA780072CEB9 /* LogInViewController.swift */,
+				FD11D5FE27EAF30000CFFAE9 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		FDA0BE5827EB10DE00A2767E /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				FDCBE1A6283E580D005B54A6 /* PostsViewController.swift */,
+				FDA0BE5B27EB121C00A2767E /* Posts.swift */,
+				FDC69E2E281D7B04003D98BE /* CustomTableViewCell.swift */,
+				FDA0BE5927EB10F400A2767E /* Post.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD30FF8527C50529005961A8 /* Netology-1_3-navigation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD30FF9A27C5053A005961A8 /* Build configuration list for PBXNativeTarget "Netology-1_3-navigation" */;
+			buildPhases = (
+				FD30FF8227C50529005961A8 /* Sources */,
+				FD30FF8327C50529005961A8 /* Frameworks */,
+				FD30FF8427C50529005961A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Netology-1_3-navigation";
+			productName = "Netology-1_3-navigation";
+			productReference = FD30FF8627C50529005961A8 /* Netology-1_3-navigation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD30FF7E27C50529005961A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					FD30FF8527C50529005961A8 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1330;
+					};
+				};
+			};
+			buildConfigurationList = FD30FF8127C50529005961A8 /* Build configuration list for PBXProject "Netology-1_3-navigation" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FD30FF7D27C50529005961A8;
+			productRefGroup = FD30FF8727C50529005961A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD30FF8527C50529005961A8 /* Netology-1_3-navigation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD30FF8427C50529005961A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD30FF9327C5053A005961A8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD30FF8227C50529005961A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDCBE1A7283E580E005B54A6 /* PostsViewController.swift in Sources */,
+				FDAAA060283399C800528E74 /* Photo.swift in Sources */,
+				FD22F48228201A310099BA12 /* PhotosTableViewCell.swift in Sources */,
+				FD22F485282053470099BA12 /* PhotosViewController.swift in Sources */,
+				FD30FFA827C56F1B005961A8 /* FeedViewController.swift in Sources */,
+				FD30FF8A27C50529005961A8 /* AppDelegate.swift in Sources */,
+				FD30FF8C27C50529005961A8 /* SceneDelegate.swift in Sources */,
+				FD9CD43D27E8DA780072CEB9 /* LogInViewController.swift in Sources */,
+				FDA0BE5C27EB121C00A2767E /* Posts.swift in Sources */,
+				FDC69E35281DC880003D98BE /* ProfileHeaderView.swift in Sources */,
+				FD11D5FF27EAF30000CFFAE9 /* ProfileViewController.swift in Sources */,
+				FD7318C227C6DA9900913FD4 /* InfoViewController.swift in Sources */,
+				FD30FFAC27C57D32005961A8 /* PostViewController.swift in Sources */,
+				FDAAA06228339E3C00528E74 /* Photos.swift in Sources */,
+				FDD57BC02831843000B3D1A4 /* PhotosCollectionViewCell.swift in Sources */,
+				FDA0BE5A27EB10F400A2767E /* Post.swift in Sources */,
+				FDC69E2F281D7B05003D98BE /* CustomTableViewCell.swift in Sources */,
+				FDC69E31281D88F5003D98BE /* UIView+Extantion.swift in Sources */,
+				FD394C60283760700017720D /* testcontroller.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FD30FF9827C5053A005961A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FD30FF9927C5053A005961A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD30FF9B27C5053A005961A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VXMM262X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Netology-1_3-navigation/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mi1212.Netology-1-3-navigation";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FD30FF9C27C5053A005961A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VXMM262X54;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Netology-1_3-navigation/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mi1212.Netology-1-3-navigation";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD30FF8127C50529005961A8 /* Build configuration list for PBXProject "Netology-1_3-navigation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD30FF9827C5053A005961A8 /* Debug */,
+				FD30FF9927C5053A005961A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD30FF9A27C5053A005961A8 /* Build configuration list for PBXNativeTarget "Netology-1_3-navigation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD30FF9B27C5053A005961A8 /* Debug */,
+				FD30FF9C27C5053A005961A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD30FF7E27C50529005961A8 /* Project object */;
+}
