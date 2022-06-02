@@ -124,7 +124,7 @@ extension ProfileViewController: UITableViewDelegate {
             vc.setupVC(post:postsArray[indexPath.row - 1], indexPath: indexPath)
             ProfileViewController.viewsArray[(indexPath.row - 1)] += 1
             print("ProfileViewController")
-            print(ProfileViewController.viewsArray[(indexPath.row - 1)])
+            print(ProfileViewController.viewsArray[(indexPath.row - 1)])	
             tableView.reloadData()
             self.present(vc, animated: true)
         default:
