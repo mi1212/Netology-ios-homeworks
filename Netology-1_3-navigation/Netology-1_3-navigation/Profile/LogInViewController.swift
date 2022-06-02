@@ -214,6 +214,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func didTapTransitionButton() {
         let secondVC = ProfileViewController()
+//        let secondVC = TestController()
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
