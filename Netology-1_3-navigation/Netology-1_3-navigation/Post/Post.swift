@@ -14,5 +14,6 @@ struct Post: Decodable {
     var image: String
     var likes: Int
     var views: Int
+    var isLiked: Bool
 
 }
