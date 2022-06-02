@@ -85,6 +85,7 @@ class PhotosTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
+
             lable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: insetLayot),
             lable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: insetLayot),
         ])
@@ -95,6 +96,13 @@ class PhotosTableViewCell: UITableViewCell {
             arrow.heightAnchor.constraint(equalToConstant: 24),
             arrow.widthAnchor.constraint(equalToConstant: 24)
         ])
+
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: arrow.topAnchor),
+            button.trailingAnchor.constraint(equalTo: arrow.trailingAnchor),
+            button.leadingAnchor.constraint(equalTo: arrow.leadingAnchor),
+            button.bottomAnchor.constraint(equalTo: arrow.bottomAnchor),
+        ])
         
         NSLayoutConstraint.activate([
             photoCollection.topAnchor.constraint(equalTo: lable.bottomAnchor, constant: insetLayot),
@@ -102,7 +110,6 @@ class PhotosTableViewCell: UITableViewCell {
             photoCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -insetLayot),
             photoCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -insetLayot),
             photoCollection.heightAnchor.constraint(equalToConstant: height)
-            
         ])
     }
 
